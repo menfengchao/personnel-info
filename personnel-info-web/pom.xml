@@ -44,12 +44,6 @@
         </dependency>
         <dependency>
             <groupId>com.byd</groupId>
-            <artifactId>personnel-info-service</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.byd</groupId>
             <artifactId>personnel-info-biz</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>

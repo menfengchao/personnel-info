@@ -21,7 +21,7 @@
 
         <dependency>
             <groupId>com.byd</groupId>
-            <artifactId>personnel-info-dao</artifactId>
+            <artifactId>personnel-info-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
