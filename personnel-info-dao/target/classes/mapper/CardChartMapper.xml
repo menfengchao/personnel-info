@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byd.personnel.mapper.CardChartMapper">
+    <resultMap id="BaseResultMap" type="com.byd.personnel.common.entity.CardChartEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="order_number" jdbcType="BIGINT" property="orderNumber"/>
+        <result column="picture_link" jdbcType="BIGINT" property="pictureLink"/>
+        <result column="text" jdbcType="VARCHAR" property="text"/>
+        <result column="article_link_id" jdbcType="BIGINT" property="articleLinkId"/>
+        <result column="read_number" jdbcType="INTEGER" property="readNumber"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="create_id" jdbcType="VARCHAR" property="createId"/>
+        <result column="create_time" jdbcType="DATE" property="createTime"/>
+        <result column="update_id" jdbcType="VARCHAR" property="updateId"/>
+        <result column="update_time" jdbcType="DATE" property="updateTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    id, order_number, picture_link, "text", article_link_id, read_number, "status", create_id,
+    create_time, update_id, update_time
+   </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from "card_chart"
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from "card_chart"
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.byd.personnel.common.entity.CardChartEntity"
+            useGeneratedKeys="true">
+    insert into "card_chart" (id, order_number, picture_link, "text",
+      article_link_id, read_number, "status",
+      create_id, create_time, update_id,
+      update_time)
+    values (#{id,jdbcType=BIGINT},#{orderNumber,jdbcType=BIGINT}, #{pictureLink,jdbcType=BIGINT}, #{text,jdbcType=VARCHAR},
+      #{articleLinkId,jdbcType=BIGINT}, #{readNumber,jdbcType=INTEGER}, #{status,jdbcType=INTEGER},
+      #{createId,jdbcType=VARCHAR}, #{createTime,jdbcType=DATE}, #{updateId,jdbcType=VARCHAR},
+      #{updateTime,jdbcType=DATE})
+  </insert>
+
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.byd.personnel.common.entity.CardChartEntity" useGeneratedKeys="true">
+        insert into "card_chart"
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderNumber != null">
+                order_number,
+            </if>
+            <if test="pictureLink != null">
+                picture_link,
+            </if>
+            <if test="text != null">
+                "text",
+            </if>
+            <if test="articleLinkId != null">
+                article_link_id,
+            </if>
+            <if test="readNumber != null">
+                read_number,
+            </if>
+            <if test="status != null">
+                "status",
+            </if>
+            <if test="createId != null">
+                create_id,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateId != null">
+                update_id,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderNumber != null">
+                #{orderNumber,jdbcType=BIGINT},
+            </if>
+            <if test="pictureLink != null">
+                #{pictureLink,jdbcType=BIGINT},
+            </if>
+            <if test="text != null">
+                #{text,jdbcType=VARCHAR},
+            </if>
+            <if test="articleLinkId != null">
+                #{articleLinkId,jdbcType=BIGINT},
+            </if>
+            <if test="readNumber != null">
+                #{readNumber,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createId != null">
+                #{createId,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=DATE},
+            </if>
+            <if test="updateId != null">
+                #{updateId,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=DATE},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.byd.personnel.common.entity.CardChartEntity">
+        update "card_chart"
+        <set>
+            <if test="orderNumber != null">
+                order_number = #{orderNumber,jdbcType=BIGINT},
+            </if>
+            <if test="pictureLink != null">
+                picture_link = #{pictureLink,jdbcType=BIGINT},
+            </if>
+            <if test="text != null">
+                "text" = #{text,jdbcType=VARCHAR},
+            </if>
+            <if test="articleLinkId != null">
+                article_link_id = #{articleLinkId,jdbcType=BIGINT},
+            </if>
+            <if test="readNumber != null">
+                read_number = #{readNumber,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                "status" = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createId != null">
+                create_id = #{createId,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=DATE},
+            </if>
+            <if test="updateId != null">
+                update_id = #{updateId,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=DATE},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.byd.personnel.common.entity.CardChartEntity">
+    update "card_chart"
+     set order_number = #{orderNumber,jdbcType=BIGINT},
+       picture_link = #{pictureLink,jdbcType=BIGINT},
+       "text" = #{text,jdbcType=VARCHAR},
+       article_link_id = #{articleLinkId,jdbcType=BIGINT},
+       read_number = #{readNumber,jdbcType=INTEGER},
+       "status" = #{status,jdbcType=INTEGER},
+       create_id = #{createId,jdbcType=VARCHAR},
+       create_time = #{createTime,jdbcType=DATE},
+       update_id = #{updateId,jdbcType=VARCHAR},
+       update_time = #{updateTime,jdbcType=DATE}
+     where id = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>
