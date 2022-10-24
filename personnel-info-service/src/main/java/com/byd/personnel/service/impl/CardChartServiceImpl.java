@@ -1,8 +1,8 @@
-package com.byd.personnel.impl;
+package com.byd.personnel.service.impl;
 
-import com.byd.personnel.CardChartService;
+import com.byd.personnel.service.CardChartService;
 import com.byd.personnel.common.entity.CardChartEntity;
-import com.byd.personnel.mapper.CardChartMapper;
+import com.byd.personnel.dao.mapper.CardChartMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

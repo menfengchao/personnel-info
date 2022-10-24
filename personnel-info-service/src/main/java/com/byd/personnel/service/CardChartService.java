@@ -1,4 +1,4 @@
-package com.byd.personnel;
+package com.byd.personnel.service;
 
 import com.byd.personnel.common.entity.CardChartEntity;
 

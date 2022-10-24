@@ -1,4 +1,4 @@
-package com.byd.personnel.mapper;
+package com.byd.personnel.dao.mapper;
 
 import com.byd.personnel.common.entity.CardChartEntity;
 import org.springframework.stereotype.Repository;
