@@ -1,0 +1,1677 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byd.personnel.dao.mapper.PostSchoolEnrollmentMapper">
+
+    <resultMap type="com.byd.personnel.common.entity.PostSchoolEnrollmentEntity" id="PostSchoolEnrollmentResultMap">
+        <result property="id" column="id" jdbcType="BIGINT"/>
+        <result property="classType" column="class_type" jdbcType="INTEGER"/>
+        <result property="recruitingType" column="recruiting_type" jdbcType="VARCHAR"/>
+        <result property="positionNumber" column="position_number" jdbcType="VARCHAR"/>
+        <result property="businessDivision" column="business_division" jdbcType="VARCHAR"/>
+        <result property="organizationName" column="organization_name" jdbcType="VARCHAR"/>
+        <result property="factory" column="factory" jdbcType="VARCHAR"/>
+        <result property="department" column="department" jdbcType="VARCHAR"/>
+        <result property="sectionOffice" column="section_office" jdbcType="VARCHAR"/>
+        <result property="headCount" column="head_count" jdbcType="INTEGER"/>
+        <result property="recruitedNumber" column="recruited_number" jdbcType="INTEGER"/>
+        <result property="checkedNumber" column="checked_number" jdbcType="INTEGER"/>
+        <result property="positionCode" column="position_code" jdbcType="VARCHAR"/>
+        <result property="positionName" column="position_name" jdbcType="VARCHAR"/>
+        <result property="positionLevel" column="position_level" jdbcType="VARCHAR"/>
+        <result property="recruitingLevel" column="recruiting_level" jdbcType="VARCHAR"/>
+        <result property="recruitingLevelSmall" column="recruiting_level_small" jdbcType="VARCHAR"/>
+        <result property="positionDirection" column="position_direction" jdbcType="VARCHAR"/>
+        <result property="education" column="education" jdbcType="VARCHAR"/>
+        <result property="majorCategoryFirst" column="major_category_first" jdbcType="VARCHAR"/>
+        <result property="majorFirst" column="major_first" jdbcType="VARCHAR"/>
+        <result property="researchFirst" column="research_first" jdbcType="VARCHAR"/>
+        <result property="majorCategorySecond" column="major_category_second" jdbcType="VARCHAR"/>
+        <result property="majorCategoryThird" column="major_category_third" jdbcType="VARCHAR"/>
+        <result property="schoolClassify" column="school_classify" jdbcType="VARCHAR"/>
+        <result property="schoolFirst" column="school_first" jdbcType="VARCHAR"/>
+        <result property="schoolSecond" column="school_second" jdbcType="VARCHAR"/>
+        <result property="workPlace" column="work_place" jdbcType="VARCHAR"/>
+        <result property="foreignLanguage" column="foreign_language" jdbcType="VARCHAR"/>
+        <result property="sex" column="sex" jdbcType="VARCHAR"/>
+        <result property="serviceProject" column="service_project" jdbcType="VARCHAR"/>
+        <result property="applyReason" column="apply_reason" jdbcType="VARCHAR"/>
+        <result property="positionStatement" column="position_statement" jdbcType="VARCHAR"/>
+        <result property="recruitingRequire" column="recruiting_require" jdbcType="VARCHAR"/>
+        <result property="ortherRemark" column="orther_remark" jdbcType="VARCHAR"/>
+        <result property="technicalSecond" column="technical_second" jdbcType="VARCHAR"/>
+        <result property="doubleFlag" column="double_flag" jdbcType="VARCHAR"/>
+        <result property="doubleOrganization" column="double_organization" jdbcType="VARCHAR"/>
+        <result property="closeTime" column="close_time" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="abandonNumber" column="abandon_number" jdbcType="INTEGER"/>
+        <result property="abandonReason" column="abandon_reason" jdbcType="VARCHAR"/>
+        <result property="operatorName" column="operator_name" jdbcType="VARCHAR"/>
+        <result property="positionDescribe" column="position_describe" jdbcType="VARCHAR"/>
+        <result property="extend1" column="extend1" jdbcType="VARCHAR"/>
+        <result property="extend2" column="extend2" jdbcType="VARCHAR"/>
+        <result property="extend3" column="extend3" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="table_field">
+      id, class_type, recruiting_type, position_number, business_division, organization_name, factory, department, section_office, head_count, recruited_number, checked_number, position_code, position_name, position_level, recruiting_level, recruiting_level_small, position_direction, education, major_category_first, major_first, research_first, major_category_second, major_category_third, school_classify, school_first, school_second, work_place, foreign_language, sex, service_project, apply_reason, position_statement, recruiting_require, orther_remark, technical_second, double_flag, double_organization, close_time, status, abandon_number, abandon_reason, operator_name, position_describe, extend1, extend2, extend3
+    </sql>
+       
+    <!--通过Id查询单个-->
+    <select id="getById" resultMap="PostSchoolEnrollmentResultMap" parameterType="java.lang.Long">
+        select
+          <include refid="table_field" />
+        from post_school_enrollment
+        where  id= #{id,jdbcType=BIGINT}
+    </select>
+
+
+    <!--通过实体不为空的属性作为筛选条件查询列表-->
+    <select id="listByEntity" resultMap="PostSchoolEnrollmentResultMap" parameterType="com.byd.personnel.common.entity.PostSchoolEnrollmentEntity">
+        select
+          <include refid="table_field" />
+        from post_school_enrollment
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="classType != null">
+                and class_type = #{classType,jdbcType=INTEGER}
+            </if>
+            <if test="recruitingType != null">
+                and recruiting_type = #{recruitingType,jdbcType=VARCHAR}
+            </if>
+            <if test="positionNumber != null">
+                and position_number = #{positionNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="businessDivision != null">
+                and business_division = #{businessDivision,jdbcType=VARCHAR}
+            </if>
+            <if test="organizationName != null">
+                and organization_name = #{organizationName,jdbcType=VARCHAR}
+            </if>
+            <if test="factory != null">
+                and factory = #{factory,jdbcType=VARCHAR}
+            </if>
+            <if test="department != null">
+                and department = #{department,jdbcType=VARCHAR}
+            </if>
+            <if test="sectionOffice != null">
+                and section_office = #{sectionOffice,jdbcType=VARCHAR}
+            </if>
+            <if test="headCount != null">
+                and head_count = #{headCount,jdbcType=INTEGER}
+            </if>
+            <if test="recruitedNumber != null">
+                and recruited_number = #{recruitedNumber,jdbcType=INTEGER}
+            </if>
+            <if test="checkedNumber != null">
+                and checked_number = #{checkedNumber,jdbcType=INTEGER}
+            </if>
+            <if test="positionCode != null">
+                and position_code = #{positionCode,jdbcType=VARCHAR}
+            </if>
+            <if test="positionName != null">
+                and position_name = #{positionName,jdbcType=VARCHAR}
+            </if>
+            <if test="positionLevel != null">
+                and position_level = #{positionLevel,jdbcType=VARCHAR}
+            </if>
+            <if test="recruitingLevel != null">
+                and recruiting_level = #{recruitingLevel,jdbcType=VARCHAR}
+            </if>
+            <if test="recruitingLevelSmall != null">
+                and recruiting_level_small = #{recruitingLevelSmall,jdbcType=VARCHAR}
+            </if>
+            <if test="positionDirection != null">
+                and position_direction = #{positionDirection,jdbcType=VARCHAR}
+            </if>
+            <if test="education != null">
+                and education = #{education,jdbcType=VARCHAR}
+            </if>
+            <if test="majorCategoryFirst != null">
+                and major_category_first = #{majorCategoryFirst,jdbcType=VARCHAR}
+            </if>
+            <if test="majorFirst != null">
+                and major_first = #{majorFirst,jdbcType=VARCHAR}
+            </if>
+            <if test="researchFirst != null">
+                and research_first = #{researchFirst,jdbcType=VARCHAR}
+            </if>
+            <if test="majorCategorySecond != null">
+                and major_category_second = #{majorCategorySecond,jdbcType=VARCHAR}
+            </if>
+            <if test="majorCategoryThird != null">
+                and major_category_third = #{majorCategoryThird,jdbcType=VARCHAR}
+            </if>
+            <if test="schoolClassify != null">
+                and school_classify = #{schoolClassify,jdbcType=VARCHAR}
+            </if>
+            <if test="schoolFirst != null">
+                and school_first = #{schoolFirst,jdbcType=VARCHAR}
+            </if>
+            <if test="schoolSecond != null">
+                and school_second = #{schoolSecond,jdbcType=VARCHAR}
+            </if>
+            <if test="workPlace != null">
+                and work_place = #{workPlace,jdbcType=VARCHAR}
+            </if>
+            <if test="foreignLanguage != null">
+                and foreign_language = #{foreignLanguage,jdbcType=VARCHAR}
+            </if>
+            <if test="sex != null">
+                and sex = #{sex,jdbcType=VARCHAR}
+            </if>
+            <if test="serviceProject != null">
+                and service_project = #{serviceProject,jdbcType=VARCHAR}
+            </if>
+            <if test="applyReason != null">
+                and apply_reason = #{applyReason,jdbcType=VARCHAR}
+            </if>
+            <if test="positionStatement != null">
+                and position_statement = #{positionStatement,jdbcType=VARCHAR}
+            </if>
+            <if test="recruitingRequire != null">
+                and recruiting_require = #{recruitingRequire,jdbcType=VARCHAR}
+            </if>
+            <if test="ortherRemark != null">
+                and orther_remark = #{ortherRemark,jdbcType=VARCHAR}
+            </if>
+            <if test="technicalSecond != null">
+                and technical_second = #{technicalSecond,jdbcType=VARCHAR}
+            </if>
+            <if test="doubleFlag != null">
+                and double_flag = #{doubleFlag,jdbcType=VARCHAR}
+            </if>
+            <if test="doubleOrganization != null">
+                and double_organization = #{doubleOrganization,jdbcType=VARCHAR}
+            </if>
+            <if test="closeTime != null">
+                and close_time = #{closeTime,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null">
+                and status = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="abandonNumber != null">
+                and abandon_number = #{abandonNumber,jdbcType=INTEGER}
+            </if>
+            <if test="abandonReason != null">
+                and abandon_reason = #{abandonReason,jdbcType=VARCHAR}
+            </if>
+            <if test="operatorName != null">
+                and operator_name = #{operatorName,jdbcType=VARCHAR}
+            </if>
+            <if test="positionDescribe != null">
+                and position_describe = #{positionDescribe,jdbcType=VARCHAR}
+            </if>
+            <if test="extend1 != null">
+                and extend1 = #{extend1,jdbcType=VARCHAR}
+            </if>
+            <if test="extend2 != null">
+                and extend2 = #{extend2,jdbcType=VARCHAR}
+            </if>
+            <if test="extend3 != null">
+                and extend3 = #{extend3,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <!--通过实体不为空的属性作为筛选条件查询单个-->
+    <select id="getByEntity" resultMap="PostSchoolEnrollmentResultMap" parameterType="com.byd.personnel.common.entity.PostSchoolEnrollmentEntity">
+        select
+          <include refid="table_field" />
+        from post_school_enrollment
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="classType != null">
+                and class_type = #{classType,jdbcType=INTEGER}
+            </if>
+            <if test="recruitingType != null">
+                and recruiting_type = #{recruitingType,jdbcType=VARCHAR}
+            </if>
+            <if test="positionNumber != null">
+                and position_number = #{positionNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="businessDivision != null">
+                and business_division = #{businessDivision,jdbcType=VARCHAR}
+            </if>
+            <if test="organizationName != null">
+                and organization_name = #{organizationName,jdbcType=VARCHAR}
+            </if>
+            <if test="factory != null">
+                and factory = #{factory,jdbcType=VARCHAR}
+            </if>
+            <if test="department != null">
+                and department = #{department,jdbcType=VARCHAR}
+            </if>
+            <if test="sectionOffice != null">
+                and section_office = #{sectionOffice,jdbcType=VARCHAR}
+            </if>
+            <if test="headCount != null">
+                and head_count = #{headCount,jdbcType=INTEGER}
+            </if>
+            <if test="recruitedNumber != null">
+                and recruited_number = #{recruitedNumber,jdbcType=INTEGER}
+            </if>
+            <if test="checkedNumber != null">
+                and checked_number = #{checkedNumber,jdbcType=INTEGER}
+            </if>
+            <if test="positionCode != null">
+                and position_code = #{positionCode,jdbcType=VARCHAR}
+            </if>
+            <if test="positionName != null">
+                and position_name = #{positionName,jdbcType=VARCHAR}
+            </if>
+            <if test="positionLevel != null">
+                and position_level = #{positionLevel,jdbcType=VARCHAR}
+            </if>
+            <if test="recruitingLevel != null">
+                and recruiting_level = #{recruitingLevel,jdbcType=VARCHAR}
+            </if>
+            <if test="recruitingLevelSmall != null">
+                and recruiting_level_small = #{recruitingLevelSmall,jdbcType=VARCHAR}
+            </if>
+            <if test="positionDirection != null">
+                and position_direction = #{positionDirection,jdbcType=VARCHAR}
+            </if>
+            <if test="education != null">
+                and education = #{education,jdbcType=VARCHAR}
+            </if>
+            <if test="majorCategoryFirst != null">
+                and major_category_first = #{majorCategoryFirst,jdbcType=VARCHAR}
+            </if>
+            <if test="majorFirst != null">
+                and major_first = #{majorFirst,jdbcType=VARCHAR}
+            </if>
+            <if test="researchFirst != null">
+                and research_first = #{researchFirst,jdbcType=VARCHAR}
+            </if>
+            <if test="majorCategorySecond != null">
+                and major_category_second = #{majorCategorySecond,jdbcType=VARCHAR}
+            </if>
+            <if test="majorCategoryThird != null">
+                and major_category_third = #{majorCategoryThird,jdbcType=VARCHAR}
+            </if>
+            <if test="schoolClassify != null">
+                and school_classify = #{schoolClassify,jdbcType=VARCHAR}
+            </if>
+            <if test="schoolFirst != null">
+                and school_first = #{schoolFirst,jdbcType=VARCHAR}
+            </if>
+            <if test="schoolSecond != null">
+                and school_second = #{schoolSecond,jdbcType=VARCHAR}
+            </if>
+            <if test="workPlace != null">
+                and work_place = #{workPlace,jdbcType=VARCHAR}
+            </if>
+            <if test="foreignLanguage != null">
+                and foreign_language = #{foreignLanguage,jdbcType=VARCHAR}
+            </if>
+            <if test="sex != null">
+                and sex = #{sex,jdbcType=VARCHAR}
+            </if>
+            <if test="serviceProject != null">
+                and service_project = #{serviceProject,jdbcType=VARCHAR}
+            </if>
+            <if test="applyReason != null">
+                and apply_reason = #{applyReason,jdbcType=VARCHAR}
+            </if>
+            <if test="positionStatement != null">
+                and position_statement = #{positionStatement,jdbcType=VARCHAR}
+            </if>
+            <if test="recruitingRequire != null">
+                and recruiting_require = #{recruitingRequire,jdbcType=VARCHAR}
+            </if>
+            <if test="ortherRemark != null">
+                and orther_remark = #{ortherRemark,jdbcType=VARCHAR}
+            </if>
+            <if test="technicalSecond != null">
+                and technical_second = #{technicalSecond,jdbcType=VARCHAR}
+            </if>
+            <if test="doubleFlag != null">
+                and double_flag = #{doubleFlag,jdbcType=VARCHAR}
+            </if>
+            <if test="doubleOrganization != null">
+                and double_organization = #{doubleOrganization,jdbcType=VARCHAR}
+            </if>
+            <if test="closeTime != null">
+                and close_time = #{closeTime,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null">
+                and status = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="abandonNumber != null">
+                and abandon_number = #{abandonNumber,jdbcType=INTEGER}
+            </if>
+            <if test="abandonReason != null">
+                and abandon_reason = #{abandonReason,jdbcType=VARCHAR}
+            </if>
+            <if test="operatorName != null">
+                and operator_name = #{operatorName,jdbcType=VARCHAR}
+            </if>
+            <if test="positionDescribe != null">
+                and position_describe = #{positionDescribe,jdbcType=VARCHAR}
+            </if>
+            <if test="extend1 != null">
+                and extend1 = #{extend1,jdbcType=VARCHAR}
+            </if>
+            <if test="extend2 != null">
+                and extend2 = #{extend2,jdbcType=VARCHAR}
+            </if>
+            <if test="extend3 != null">
+                and extend3 = #{extend3,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <!--通过Id列表作为筛选条件查询列表，列表长度不为0-->
+    <select id="listByIds" resultMap="PostSchoolEnrollmentResultMap" parameterType="list">
+        select
+          <include refid="table_field" />
+        from post_school_enrollment
+        where  in
+        <foreach item="item" collection="list" separator="," open="(" close=")" index="index">
+            #{item}
+        </foreach>
+    </select>
+
+    <!--新增实体属性不为null的列-->
+    <insert id="insert" keyProperty="" useGeneratedKeys="true" parameterType="com.byd.personnel.common.entity.PostSchoolEnrollmentEntity">
+        insert into post_school_enrollment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+          <if test="id != null">
+             id,
+          </if>
+          <if test="classType != null">
+              class_type,
+          </if>
+          <if test="recruitingType != null">
+             recruiting_type,
+          </if>
+          <if test="positionNumber != null">
+             position_number,
+          </if>
+          <if test="businessDivision != null">
+             business_division,
+          </if>
+          <if test="organizationName != null">
+             organization_name,
+          </if>
+          <if test="factory != null">
+             factory,
+          </if>
+          <if test="department != null">
+             department,
+          </if>
+          <if test="sectionOffice != null">
+             section_office,
+          </if>
+          <if test="headCount != null">
+             head_count,
+          </if>
+          <if test="recruitedNumber != null">
+             recruited_number,
+          </if>
+          <if test="checkedNumber != null">
+             checked_number,
+          </if>
+          <if test="positionCode != null">
+             position_code,
+          </if>
+          <if test="positionName != null">
+             position_name,
+          </if>
+          <if test="positionLevel != null">
+             position_level,
+          </if>
+          <if test="recruitingLevel != null">
+             recruiting_level,
+          </if>
+          <if test="recruitingLevelSmall != null">
+             recruiting_level_small,
+          </if>
+          <if test="positionDirection != null">
+             position_direction,
+          </if>
+          <if test="education != null">
+             education,
+          </if>
+          <if test="majorCategoryFirst != null">
+             major_category_first,
+          </if>
+          <if test="majorFirst != null">
+             major_first,
+          </if>
+          <if test="researchFirst != null">
+             research_first,
+          </if>
+          <if test="majorCategorySecond != null">
+             major_category_second,
+          </if>
+          <if test="majorCategoryThird != null">
+             major_category_third,
+          </if>
+          <if test="schoolClassify != null">
+             school_classify,
+          </if>
+          <if test="schoolFirst != null">
+             school_first,
+          </if>
+          <if test="schoolSecond != null">
+             school_second,
+          </if>
+          <if test="workPlace != null">
+             work_place,
+          </if>
+          <if test="foreignLanguage != null">
+             foreign_language,
+          </if>
+          <if test="sex != null">
+             sex,
+          </if>
+          <if test="serviceProject != null">
+             service_project,
+          </if>
+          <if test="applyReason != null">
+             apply_reason,
+          </if>
+          <if test="positionStatement != null">
+             position_statement,
+          </if>
+          <if test="recruitingRequire != null">
+             recruiting_require,
+          </if>
+          <if test="ortherRemark != null">
+             orther_remark,
+          </if>
+          <if test="technicalSecond != null">
+             technical_second,
+          </if>
+          <if test="doubleFlag != null">
+             double_flag,
+          </if>
+          <if test="doubleOrganization != null">
+             double_organization,
+          </if>
+          <if test="closeTime != null">
+             close_time,
+          </if>
+          <if test="status != null">
+             status,
+          </if>
+          <if test="abandonNumber != null">
+             abandon_number,
+          </if>
+          <if test="abandonReason != null">
+             abandon_reason,
+          </if>
+          <if test="operatorName != null">
+             operator_name,
+          </if>
+          <if test="positionDescribe != null">
+             position_describe,
+          </if>
+          <if test="extend1 != null">
+             extend1,
+          </if>
+          <if test="extend2 != null">
+             extend2,
+          </if>
+          <if test="extend3 != null">
+             extend3,
+          </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+          <if test="id != null">
+             #{id,jdbcType=INTEGER},
+          </if>
+          <if test="classType != null">
+             #{classType,jdbcType=INTEGER},
+          </if>
+          <if test="recruitingType != null">
+             #{recruitingType,jdbcType=VARCHAR},
+          </if>
+          <if test="positionNumber != null">
+             #{positionNumber,jdbcType=VARCHAR},
+          </if>
+          <if test="businessDivision != null">
+             #{businessDivision,jdbcType=VARCHAR},
+          </if>
+          <if test="organizationName != null">
+             #{organizationName,jdbcType=VARCHAR},
+          </if>
+          <if test="factory != null">
+             #{factory,jdbcType=VARCHAR},
+          </if>
+          <if test="department != null">
+             #{department,jdbcType=VARCHAR},
+          </if>
+          <if test="sectionOffice != null">
+             #{sectionOffice,jdbcType=VARCHAR},
+          </if>
+          <if test="headCount != null">
+             #{headCount,jdbcType=INTEGER},
+          </if>
+          <if test="recruitedNumber != null">
+             #{recruitedNumber,jdbcType=INTEGER},
+          </if>
+          <if test="checkedNumber != null">
+             #{checkedNumber,jdbcType=INTEGER},
+          </if>
+          <if test="positionCode != null">
+             #{positionCode,jdbcType=VARCHAR},
+          </if>
+          <if test="positionName != null">
+             #{positionName,jdbcType=VARCHAR},
+          </if>
+          <if test="positionLevel != null">
+             #{positionLevel,jdbcType=VARCHAR},
+          </if>
+          <if test="recruitingLevel != null">
+             #{recruitingLevel,jdbcType=VARCHAR},
+          </if>
+          <if test="recruitingLevelSmall != null">
+             #{recruitingLevelSmall,jdbcType=VARCHAR},
+          </if>
+          <if test="positionDirection != null">
+             #{positionDirection,jdbcType=VARCHAR},
+          </if>
+          <if test="education != null">
+             #{education,jdbcType=VARCHAR},
+          </if>
+          <if test="majorCategoryFirst != null">
+             #{majorCategoryFirst,jdbcType=VARCHAR},
+          </if>
+          <if test="majorFirst != null">
+             #{majorFirst,jdbcType=VARCHAR},
+          </if>
+          <if test="researchFirst != null">
+             #{researchFirst,jdbcType=VARCHAR},
+          </if>
+          <if test="majorCategorySecond != null">
+             #{majorCategorySecond,jdbcType=VARCHAR},
+          </if>
+          <if test="majorCategoryThird != null">
+             #{majorCategoryThird,jdbcType=VARCHAR},
+          </if>
+          <if test="schoolClassify != null">
+             #{schoolClassify,jdbcType=VARCHAR},
+          </if>
+          <if test="schoolFirst != null">
+             #{schoolFirst,jdbcType=VARCHAR},
+          </if>
+          <if test="schoolSecond != null">
+             #{schoolSecond,jdbcType=VARCHAR},
+          </if>
+          <if test="workPlace != null">
+             #{workPlace,jdbcType=VARCHAR},
+          </if>
+          <if test="foreignLanguage != null">
+             #{foreignLanguage,jdbcType=VARCHAR},
+          </if>
+          <if test="sex != null">
+             #{sex,jdbcType=VARCHAR},
+          </if>
+          <if test="serviceProject != null">
+             #{serviceProject,jdbcType=VARCHAR},
+          </if>
+          <if test="applyReason != null">
+             #{applyReason,jdbcType=VARCHAR},
+          </if>
+          <if test="positionStatement != null">
+             #{positionStatement,jdbcType=VARCHAR},
+          </if>
+          <if test="recruitingRequire != null">
+             #{recruitingRequire,jdbcType=VARCHAR},
+          </if>
+          <if test="ortherRemark != null">
+             #{ortherRemark,jdbcType=VARCHAR},
+          </if>
+          <if test="technicalSecond != null">
+             #{technicalSecond,jdbcType=VARCHAR},
+          </if>
+          <if test="doubleFlag != null">
+             #{doubleFlag,jdbcType=VARCHAR},
+          </if>
+          <if test="doubleOrganization != null">
+             #{doubleOrganization,jdbcType=VARCHAR},
+          </if>
+          <if test="closeTime != null">
+             #{closeTime,jdbcType=VARCHAR},
+          </if>
+          <if test="status != null">
+             #{status,jdbcType=VARCHAR},
+          </if>
+          <if test="abandonNumber != null">
+             #{abandonNumber,jdbcType=INTEGER},
+          </if>
+          <if test="abandonReason != null">
+             #{abandonReason,jdbcType=VARCHAR},
+          </if>
+          <if test="operatorName != null">
+             #{operatorName,jdbcType=VARCHAR},
+          </if>
+          <if test="positionDescribe != null">
+             #{positionDescribe,jdbcType=VARCHAR},
+          </if>
+          <if test="extend1 != null">
+             #{extend1,jdbcType=VARCHAR},
+          </if>
+          <if test="extend2 != null">
+             #{extend2,jdbcType=VARCHAR},
+          </if>
+          <if test="extend3 != null">
+             #{extend3,jdbcType=VARCHAR},
+          </if>
+        </trim>
+    </insert>
+
+    <!--批量新增所有列，列表长度不能为0，且列表id统一为null或者统一不为null-->
+    <insert id="insertBatch" keyProperty="" useGeneratedKeys="true" parameterType="list">
+        insert into post_school_enrollment
+         (id, class_type, recruiting_type, position_number, business_division, organization_name, factory, department, section_office, head_count, recruited_number, checked_number, position_code, position_name, position_level, recruiting_level, recruiting_level_small, position_direction, education, major_category_first, major_first, research_first, major_category_second, major_category_third, school_classify, school_first, school_second, work_place, foreign_language, sex, service_project, apply_reason, position_statement, recruiting_require, orther_remark, technical_second, double_flag, double_organization, close_time, status, abandon_number, abandon_reason, operator_name, position_describe, extend1, extend2, extend3)
+        values
+        <foreach item="item" collection="list" separator="," open="" close="" index="index">
+         (#{item.id}, #{item.classType}, #{item.recruitingType}, #{item.positionNumber}, #{item.businessDivision}, #{item.organizationName}, #{item.factory}, #{item.department}, #{item.sectionOffice}, #{item.headCount}, #{item.recruitedNumber}, #{item.checkedNumber}, #{item.positionCode}, #{item.positionName}, #{item.positionLevel}, #{item.recruitingLevel}, #{item.recruitingLevelSmall}, #{item.positionDirection}, #{item.education}, #{item.majorCategoryFirst}, #{item.majorFirst}, #{item.researchFirst}, #{item.majorCategorySecond}, #{item.majorCategoryThird}, #{item.schoolClassify}, #{item.schoolFirst}, #{item.schoolSecond}, #{item.workPlace}, #{item.foreignLanguage}, #{item.sex}, #{item.serviceProject}, #{item.applyReason}, #{item.positionStatement}, #{item.recruitingRequire}, #{item.ortherRemark}, #{item.technicalSecond}, #{item.doubleFlag}, #{item.doubleOrganization}, #{item.closeTime}, #{item.status}, #{item.abandonNumber}, #{item.abandonReason}, #{item.operatorName}, #{item.positionDescribe}, #{item.extend1}, #{item.extend2}, #{item.extend3})
+        </foreach>
+    </insert>
+
+    <!--通过主键修改实体属性不为null的列-->
+    <update id="update" parameterType="com.byd.personnel.common.entity.PostSchoolEnrollmentEntity">
+        update post_school_enrollment
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="classType != null">
+                class_type = #{classType,jdbcType=INTEGER},
+            </if>
+            <if test="recruitingType != null and recruitingType != ''">
+                recruiting_type = #{recruitingType,jdbcType=VARCHAR},
+            </if>
+            <if test="positionNumber != null and positionNumber != ''">
+                position_number = #{positionNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="businessDivision != null and businessDivision != ''">
+                business_division = #{businessDivision,jdbcType=VARCHAR},
+            </if>
+            <if test="organizationName != null and organizationName != ''">
+                organization_name = #{organizationName,jdbcType=VARCHAR},
+            </if>
+            <if test="factory != null and factory != ''">
+                factory = #{factory,jdbcType=VARCHAR},
+            </if>
+            <if test="department != null and department != ''">
+                department = #{department,jdbcType=VARCHAR},
+            </if>
+            <if test="sectionOffice != null and sectionOffice != ''">
+                section_office = #{sectionOffice,jdbcType=VARCHAR},
+            </if>
+            <if test="headCount != null">
+                head_count = #{headCount,jdbcType=INTEGER},
+            </if>
+            <if test="recruitedNumber != null">
+                recruited_number = #{recruitedNumber,jdbcType=INTEGER},
+            </if>
+            <if test="checkedNumber != null">
+                checked_number = #{checkedNumber,jdbcType=INTEGER},
+            </if>
+            <if test="positionCode != null and positionCode != ''">
+                position_code = #{positionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="positionName != null and positionName != ''">
+                position_name = #{positionName,jdbcType=VARCHAR},
+            </if>
+            <if test="positionLevel != null and positionLevel != ''">
+                position_level = #{positionLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="recruitingLevel != null and recruitingLevel != ''">
+                recruiting_level = #{recruitingLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="recruitingLevelSmall != null and recruitingLevelSmall != ''">
+                recruiting_level_small = #{recruitingLevelSmall,jdbcType=VARCHAR},
+            </if>
+            <if test="positionDirection != null and positionDirection != ''">
+                position_direction = #{positionDirection,jdbcType=VARCHAR},
+            </if>
+            <if test="education != null and education != ''">
+                education = #{education,jdbcType=VARCHAR},
+            </if>
+            <if test="majorCategoryFirst != null and majorCategoryFirst != ''">
+                major_category_first = #{majorCategoryFirst,jdbcType=VARCHAR},
+            </if>
+            <if test="majorFirst != null and majorFirst != ''">
+                major_first = #{majorFirst,jdbcType=VARCHAR},
+            </if>
+            <if test="researchFirst != null and researchFirst != ''">
+                research_first = #{researchFirst,jdbcType=VARCHAR},
+            </if>
+            <if test="majorCategorySecond != null and majorCategorySecond != ''">
+                major_category_second = #{majorCategorySecond,jdbcType=VARCHAR},
+            </if>
+            <if test="majorCategoryThird != null and majorCategoryThird != ''">
+                major_category_third = #{majorCategoryThird,jdbcType=VARCHAR},
+            </if>
+            <if test="schoolClassify != null and schoolClassify != ''">
+                school_classify = #{schoolClassify,jdbcType=VARCHAR},
+            </if>
+            <if test="schoolFirst != null and schoolFirst != ''">
+                school_first = #{schoolFirst,jdbcType=VARCHAR},
+            </if>
+            <if test="schoolSecond != null and schoolSecond != ''">
+                school_second = #{schoolSecond,jdbcType=VARCHAR},
+            </if>
+            <if test="workPlace != null and workPlace != ''">
+                work_place = #{workPlace,jdbcType=VARCHAR},
+            </if>
+            <if test="foreignLanguage != null and foreignLanguage != ''">
+                foreign_language = #{foreignLanguage,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null and sex != ''">
+                sex = #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="serviceProject != null and serviceProject != ''">
+                service_project = #{serviceProject,jdbcType=VARCHAR},
+            </if>
+            <if test="applyReason != null and applyReason != ''">
+                apply_reason = #{applyReason,jdbcType=VARCHAR},
+            </if>
+            <if test="positionStatement != null and positionStatement != ''">
+                position_statement = #{positionStatement,jdbcType=VARCHAR},
+            </if>
+            <if test="recruitingRequire != null and recruitingRequire != ''">
+                recruiting_require = #{recruitingRequire,jdbcType=VARCHAR},
+            </if>
+            <if test="ortherRemark != null and ortherRemark != ''">
+                orther_remark = #{ortherRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="technicalSecond != null and technicalSecond != ''">
+                technical_second = #{technicalSecond,jdbcType=VARCHAR},
+            </if>
+            <if test="doubleFlag != null and doubleFlag != ''">
+                double_flag = #{doubleFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="doubleOrganization != null and doubleOrganization != ''">
+                double_organization = #{doubleOrganization,jdbcType=VARCHAR},
+            </if>
+            <if test="closeTime != null and closeTime != ''">
+                close_time = #{closeTime,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null and status != ''">
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="abandonNumber != null">
+                abandon_number = #{abandonNumber,jdbcType=INTEGER},
+            </if>
+            <if test="abandonReason != null and abandonReason != ''">
+                abandon_reason = #{abandonReason,jdbcType=VARCHAR},
+            </if>
+            <if test="operatorName != null and operatorName != ''">
+                operator_name = #{operatorName,jdbcType=VARCHAR},
+            </if>
+            <if test="positionDescribe != null and positionDescribe != ''">
+                position_describe = #{positionDescribe,jdbcType=VARCHAR},
+            </if>
+            <if test="extend1 != null and extend1 != ''">
+                extend1 = #{extend1,jdbcType=VARCHAR},
+            </if>
+            <if test="extend2 != null and extend2 != ''">
+                extend2 = #{extend2,jdbcType=VARCHAR},
+            </if>
+            <if test="extend3 != null and extend3 != ''">
+                extend3 = #{extend3,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where  = #{,jdbcType=}
+    </update>
+
+    <!--通过表字段修改实体属性不为null的列-->
+    <update id="updateByField">
+        update post_school_enrollment
+        <set>
+            <if test="where.id == null and set.id != null">
+                id = #{set.id,jdbcType=INTEGER},
+            </if>
+            <if test="where.classType == null and set.classType != null">
+                class_type = #{set.classType,jdbcType=INTEGER},
+            </if>
+            <if test="where.recruitingType == null and set.recruitingType != null and set.recruitingType != ''">
+                recruiting_type = #{set.recruitingType,jdbcType=VARCHAR},
+            </if>
+            <if test="where.positionNumber == null and set.positionNumber != null and set.positionNumber != ''">
+                position_number = #{set.positionNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="where.businessDivision == null and set.businessDivision != null and set.businessDivision != ''">
+                business_division = #{set.businessDivision,jdbcType=VARCHAR},
+            </if>
+            <if test="where.organizationName == null and set.organizationName != null and set.organizationName != ''">
+                organization_name = #{set.organizationName,jdbcType=VARCHAR},
+            </if>
+            <if test="where.factory == null and set.factory != null and set.factory != ''">
+                factory = #{set.factory,jdbcType=VARCHAR},
+            </if>
+            <if test="where.department == null and set.department != null and set.department != ''">
+                department = #{set.department,jdbcType=VARCHAR},
+            </if>
+            <if test="where.sectionOffice == null and set.sectionOffice != null and set.sectionOffice != ''">
+                section_office = #{set.sectionOffice,jdbcType=VARCHAR},
+            </if>
+            <if test="where.headCount == null and set.headCount != null">
+                head_count = #{set.headCount,jdbcType=INTEGER},
+            </if>
+            <if test="where.recruitedNumber == null and set.recruitedNumber != null">
+                recruited_number = #{set.recruitedNumber,jdbcType=INTEGER},
+            </if>
+            <if test="where.checkedNumber == null and set.checkedNumber != null">
+                checked_number = #{set.checkedNumber,jdbcType=INTEGER},
+            </if>
+            <if test="where.positionCode == null and set.positionCode != null and set.positionCode != ''">
+                position_code = #{set.positionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="where.positionName == null and set.positionName != null and set.positionName != ''">
+                position_name = #{set.positionName,jdbcType=VARCHAR},
+            </if>
+            <if test="where.positionLevel == null and set.positionLevel != null and set.positionLevel != ''">
+                position_level = #{set.positionLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="where.recruitingLevel == null and set.recruitingLevel != null and set.recruitingLevel != ''">
+                recruiting_level = #{set.recruitingLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="where.recruitingLevelSmall == null and set.recruitingLevelSmall != null and set.recruitingLevelSmall != ''">
+                recruiting_level_small = #{set.recruitingLevelSmall,jdbcType=VARCHAR},
+            </if>
+            <if test="where.positionDirection == null and set.positionDirection != null and set.positionDirection != ''">
+                position_direction = #{set.positionDirection,jdbcType=VARCHAR},
+            </if>
+            <if test="where.education == null and set.education != null and set.education != ''">
+                education = #{set.education,jdbcType=VARCHAR},
+            </if>
+            <if test="where.majorCategoryFirst == null and set.majorCategoryFirst != null and set.majorCategoryFirst != ''">
+                major_category_first = #{set.majorCategoryFirst,jdbcType=VARCHAR},
+            </if>
+            <if test="where.majorFirst == null and set.majorFirst != null and set.majorFirst != ''">
+                major_first = #{set.majorFirst,jdbcType=VARCHAR},
+            </if>
+            <if test="where.researchFirst == null and set.researchFirst != null and set.researchFirst != ''">
+                research_first = #{set.researchFirst,jdbcType=VARCHAR},
+            </if>
+            <if test="where.majorCategorySecond == null and set.majorCategorySecond != null and set.majorCategorySecond != ''">
+                major_category_second = #{set.majorCategorySecond,jdbcType=VARCHAR},
+            </if>
+            <if test="where.majorCategoryThird == null and set.majorCategoryThird != null and set.majorCategoryThird != ''">
+                major_category_third = #{set.majorCategoryThird,jdbcType=VARCHAR},
+            </if>
+            <if test="where.schoolClassify == null and set.schoolClassify != null and set.schoolClassify != ''">
+                school_classify = #{set.schoolClassify,jdbcType=VARCHAR},
+            </if>
+            <if test="where.schoolFirst == null and set.schoolFirst != null and set.schoolFirst != ''">
+                school_first = #{set.schoolFirst,jdbcType=VARCHAR},
+            </if>
+            <if test="where.schoolSecond == null and set.schoolSecond != null and set.schoolSecond != ''">
+                school_second = #{set.schoolSecond,jdbcType=VARCHAR},
+            </if>
+            <if test="where.workPlace == null and set.workPlace != null and set.workPlace != ''">
+                work_place = #{set.workPlace,jdbcType=VARCHAR},
+            </if>
+            <if test="where.foreignLanguage == null and set.foreignLanguage != null and set.foreignLanguage != ''">
+                foreign_language = #{set.foreignLanguage,jdbcType=VARCHAR},
+            </if>
+            <if test="where.sex == null and set.sex != null and set.sex != ''">
+                sex = #{set.sex,jdbcType=VARCHAR},
+            </if>
+            <if test="where.serviceProject == null and set.serviceProject != null and set.serviceProject != ''">
+                service_project = #{set.serviceProject,jdbcType=VARCHAR},
+            </if>
+            <if test="where.applyReason == null and set.applyReason != null and set.applyReason != ''">
+                apply_reason = #{set.applyReason,jdbcType=VARCHAR},
+            </if>
+            <if test="where.positionStatement == null and set.positionStatement != null and set.positionStatement != ''">
+                position_statement = #{set.positionStatement,jdbcType=VARCHAR},
+            </if>
+            <if test="where.recruitingRequire == null and set.recruitingRequire != null and set.recruitingRequire != ''">
+                recruiting_require = #{set.recruitingRequire,jdbcType=VARCHAR},
+            </if>
+            <if test="where.ortherRemark == null and set.ortherRemark != null and set.ortherRemark != ''">
+                orther_remark = #{set.ortherRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="where.technicalSecond == null and set.technicalSecond != null and set.technicalSecond != ''">
+                technical_second = #{set.technicalSecond,jdbcType=VARCHAR},
+            </if>
+            <if test="where.doubleFlag == null and set.doubleFlag != null and set.doubleFlag != ''">
+                double_flag = #{set.doubleFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="where.doubleOrganization == null and set.doubleOrganization != null and set.doubleOrganization != ''">
+                double_organization = #{set.doubleOrganization,jdbcType=VARCHAR},
+            </if>
+            <if test="where.closeTime == null and set.closeTime != null and set.closeTime != ''">
+                close_time = #{set.closeTime,jdbcType=VARCHAR},
+            </if>
+            <if test="where.status == null and set.status != null and set.status != ''">
+                status = #{set.status,jdbcType=VARCHAR},
+            </if>
+            <if test="where.abandonNumber == null and set.abandonNumber != null">
+                abandon_number = #{set.abandonNumber,jdbcType=INTEGER},
+            </if>
+            <if test="where.abandonReason == null and set.abandonReason != null and set.abandonReason != ''">
+                abandon_reason = #{set.abandonReason,jdbcType=VARCHAR},
+            </if>
+            <if test="where.operatorName == null and set.operatorName != null and set.operatorName != ''">
+                operator_name = #{set.operatorName,jdbcType=VARCHAR},
+            </if>
+            <if test="where.positionDescribe == null and set.positionDescribe != null and set.positionDescribe != ''">
+                position_describe = #{set.positionDescribe,jdbcType=VARCHAR},
+            </if>
+            <if test="where.extend1 == null and set.extend1 != null and set.extend1 != ''">
+                extend1 = #{set.extend1,jdbcType=VARCHAR},
+            </if>
+            <if test="where.extend2 == null and set.extend2 != null and set.extend2 != ''">
+                extend2 = #{set.extend2,jdbcType=VARCHAR},
+            </if>
+            <if test="where.extend3 == null and set.extend3 != null and set.extend3 != ''">
+                extend3 = #{set.extend3,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <where>
+            <if test="where.id != null">
+                and id = #{where.id,jdbcType=INTEGER}
+            </if>
+            <if test="where.classType != null">
+                and class_type = #{where.classType,jdbcType=INTEGER}
+            </if>
+            <if test="where.recruitingType != null">
+                and recruiting_type = #{where.recruitingType,jdbcType=VARCHAR}
+            </if>
+            <if test="where.positionNumber != null">
+                and position_number = #{where.positionNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="where.businessDivision != null">
+                and business_division = #{where.businessDivision,jdbcType=VARCHAR}
+            </if>
+            <if test="where.organizationName != null">
+                and organization_name = #{where.organizationName,jdbcType=VARCHAR}
+            </if>
+            <if test="where.factory != null">
+                and factory = #{where.factory,jdbcType=VARCHAR}
+            </if>
+            <if test="where.department != null">
+                and department = #{where.department,jdbcType=VARCHAR}
+            </if>
+            <if test="where.sectionOffice != null">
+                and section_office = #{where.sectionOffice,jdbcType=VARCHAR}
+            </if>
+            <if test="where.headCount != null">
+                and head_count = #{where.headCount,jdbcType=INTEGER}
+            </if>
+            <if test="where.recruitedNumber != null">
+                and recruited_number = #{where.recruitedNumber,jdbcType=INTEGER}
+            </if>
+            <if test="where.checkedNumber != null">
+                and checked_number = #{where.checkedNumber,jdbcType=INTEGER}
+            </if>
+            <if test="where.positionCode != null">
+                and position_code = #{where.positionCode,jdbcType=VARCHAR}
+            </if>
+            <if test="where.positionName != null">
+                and position_name = #{where.positionName,jdbcType=VARCHAR}
+            </if>
+            <if test="where.positionLevel != null">
+                and position_level = #{where.positionLevel,jdbcType=VARCHAR}
+            </if>
+            <if test="where.recruitingLevel != null">
+                and recruiting_level = #{where.recruitingLevel,jdbcType=VARCHAR}
+            </if>
+            <if test="where.recruitingLevelSmall != null">
+                and recruiting_level_small = #{where.recruitingLevelSmall,jdbcType=VARCHAR}
+            </if>
+            <if test="where.positionDirection != null">
+                and position_direction = #{where.positionDirection,jdbcType=VARCHAR}
+            </if>
+            <if test="where.education != null">
+                and education = #{where.education,jdbcType=VARCHAR}
+            </if>
+            <if test="where.majorCategoryFirst != null">
+                and major_category_first = #{where.majorCategoryFirst,jdbcType=VARCHAR}
+            </if>
+            <if test="where.majorFirst != null">
+                and major_first = #{where.majorFirst,jdbcType=VARCHAR}
+            </if>
+            <if test="where.researchFirst != null">
+                and research_first = #{where.researchFirst,jdbcType=VARCHAR}
+            </if>
+            <if test="where.majorCategorySecond != null">
+                and major_category_second = #{where.majorCategorySecond,jdbcType=VARCHAR}
+            </if>
+            <if test="where.majorCategoryThird != null">
+                and major_category_third = #{where.majorCategoryThird,jdbcType=VARCHAR}
+            </if>
+            <if test="where.schoolClassify != null">
+                and school_classify = #{where.schoolClassify,jdbcType=VARCHAR}
+            </if>
+            <if test="where.schoolFirst != null">
+                and school_first = #{where.schoolFirst,jdbcType=VARCHAR}
+            </if>
+            <if test="where.schoolSecond != null">
+                and school_second = #{where.schoolSecond,jdbcType=VARCHAR}
+            </if>
+            <if test="where.workPlace != null">
+                and work_place = #{where.workPlace,jdbcType=VARCHAR}
+            </if>
+            <if test="where.foreignLanguage != null">
+                and foreign_language = #{where.foreignLanguage,jdbcType=VARCHAR}
+            </if>
+            <if test="where.sex != null">
+                and sex = #{where.sex,jdbcType=VARCHAR}
+            </if>
+            <if test="where.serviceProject != null">
+                and service_project = #{where.serviceProject,jdbcType=VARCHAR}
+            </if>
+            <if test="where.applyReason != null">
+                and apply_reason = #{where.applyReason,jdbcType=VARCHAR}
+            </if>
+            <if test="where.positionStatement != null">
+                and position_statement = #{where.positionStatement,jdbcType=VARCHAR}
+            </if>
+            <if test="where.recruitingRequire != null">
+                and recruiting_require = #{where.recruitingRequire,jdbcType=VARCHAR}
+            </if>
+            <if test="where.ortherRemark != null">
+                and orther_remark = #{where.ortherRemark,jdbcType=VARCHAR}
+            </if>
+            <if test="where.technicalSecond != null">
+                and technical_second = #{where.technicalSecond,jdbcType=VARCHAR}
+            </if>
+            <if test="where.doubleFlag != null">
+                and double_flag = #{where.doubleFlag,jdbcType=VARCHAR}
+            </if>
+            <if test="where.doubleOrganization != null">
+                and double_organization = #{where.doubleOrganization,jdbcType=VARCHAR}
+            </if>
+            <if test="where.closeTime != null">
+                and close_time = #{where.closeTime,jdbcType=VARCHAR}
+            </if>
+            <if test="where.status != null">
+                and status = #{where.status,jdbcType=VARCHAR}
+            </if>
+            <if test="where.abandonNumber != null">
+                and abandon_number = #{where.abandonNumber,jdbcType=INTEGER}
+            </if>
+            <if test="where.abandonReason != null">
+                and abandon_reason = #{where.abandonReason,jdbcType=VARCHAR}
+            </if>
+            <if test="where.operatorName != null">
+                and operator_name = #{where.operatorName,jdbcType=VARCHAR}
+            </if>
+            <if test="where.positionDescribe != null">
+                and position_describe = #{where.positionDescribe,jdbcType=VARCHAR}
+            </if>
+            <if test="where.extend1 != null">
+                and extend1 = #{where.extend1,jdbcType=VARCHAR}
+            </if>
+            <if test="where.extend2 != null">
+                and extend2 = #{where.extend2,jdbcType=VARCHAR}
+            </if>
+            <if test="where.extend3 != null">
+                and extend3 = #{where.extend3,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </update>
+
+    <!--通过主键修改实体列表，列表长度不能为0，注意：当实体属性为null时，对应的列也会别更新为null-->
+    <update id="updateBatch" parameterType="list">
+        update post_school_enrollment
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="id = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.id}
+                 </foreach>
+            </trim>
+            <trim prefix="classType = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.classType}
+                 </foreach>
+            </trim>
+            <trim prefix="recruiting_type = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.recruitingType}
+                 </foreach>
+            </trim>
+            <trim prefix="position_number = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.positionNumber}
+                 </foreach>
+            </trim>
+            <trim prefix="business_division = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.businessDivision}
+                 </foreach>
+            </trim>
+            <trim prefix="organization_name = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.organizationName}
+                 </foreach>
+            </trim>
+            <trim prefix="factory = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.factory}
+                 </foreach>
+            </trim>
+            <trim prefix="department = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.department}
+                 </foreach>
+            </trim>
+            <trim prefix="section_office = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.sectionOffice}
+                 </foreach>
+            </trim>
+            <trim prefix="head_count = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.headCount}
+                 </foreach>
+            </trim>
+            <trim prefix="recruited_number = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.recruitedNumber}
+                 </foreach>
+            </trim>
+            <trim prefix="checked_number = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.checkedNumber}
+                 </foreach>
+            </trim>
+            <trim prefix="position_code = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.positionCode}
+                 </foreach>
+            </trim>
+            <trim prefix="position_name = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.positionName}
+                 </foreach>
+            </trim>
+            <trim prefix="position_level = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.positionLevel}
+                 </foreach>
+            </trim>
+            <trim prefix="recruiting_level = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.recruitingLevel}
+                 </foreach>
+            </trim>
+            <trim prefix="recruiting_level_small = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.recruitingLevelSmall}
+                 </foreach>
+            </trim>
+            <trim prefix="position_direction = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.positionDirection}
+                 </foreach>
+            </trim>
+            <trim prefix="education = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.education}
+                 </foreach>
+            </trim>
+            <trim prefix="major_category_first = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.majorCategoryFirst}
+                 </foreach>
+            </trim>
+            <trim prefix="major_first = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.majorFirst}
+                 </foreach>
+            </trim>
+            <trim prefix="research_first = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.researchFirst}
+                 </foreach>
+            </trim>
+            <trim prefix="major_category_second = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.majorCategorySecond}
+                 </foreach>
+            </trim>
+            <trim prefix="major_category_third = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.majorCategoryThird}
+                 </foreach>
+            </trim>
+            <trim prefix="school_classify = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.schoolClassify}
+                 </foreach>
+            </trim>
+            <trim prefix="school_first = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.schoolFirst}
+                 </foreach>
+            </trim>
+            <trim prefix="school_second = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.schoolSecond}
+                 </foreach>
+            </trim>
+            <trim prefix="work_place = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.workPlace}
+                 </foreach>
+            </trim>
+            <trim prefix="foreign_language = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.foreignLanguage}
+                 </foreach>
+            </trim>
+            <trim prefix="sex = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.sex}
+                 </foreach>
+            </trim>
+            <trim prefix="service_project = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.serviceProject}
+                 </foreach>
+            </trim>
+            <trim prefix="apply_reason = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.applyReason}
+                 </foreach>
+            </trim>
+            <trim prefix="position_statement = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.positionStatement}
+                 </foreach>
+            </trim>
+            <trim prefix="recruiting_require = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.recruitingRequire}
+                 </foreach>
+            </trim>
+            <trim prefix="orther_remark = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.ortherRemark}
+                 </foreach>
+            </trim>
+            <trim prefix="technical_second = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.technicalSecond}
+                 </foreach>
+            </trim>
+            <trim prefix="double_flag = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.doubleFlag}
+                 </foreach>
+            </trim>
+            <trim prefix="double_organization = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.doubleOrganization}
+                 </foreach>
+            </trim>
+            <trim prefix="close_time = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.closeTime}
+                 </foreach>
+            </trim>
+            <trim prefix="status = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.status}
+                 </foreach>
+            </trim>
+            <trim prefix="abandon_number = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.abandonNumber}
+                 </foreach>
+            </trim>
+            <trim prefix="abandon_reason = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.abandonReason}
+                 </foreach>
+            </trim>
+            <trim prefix="operator_name = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.operatorName}
+                 </foreach>
+            </trim>
+            <trim prefix="position_describe = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.positionDescribe}
+                 </foreach>
+            </trim>
+            <trim prefix="extend1 = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.extend1}
+                 </foreach>
+            </trim>
+            <trim prefix="extend2 = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.extend2}
+                 </foreach>
+            </trim>
+            <trim prefix="extend3 = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.extend3}
+                 </foreach>
+            </trim>
+        </trim>
+        where  in
+        <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    
+    <!--通过主键删除-->
+    <delete id="deleteById" parameterType="java.lang.Long">
+        delete from post_school_enrollment where  id= #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--通过实体非空属性删除-->
+    <delete id="deleteByEntity" parameterType="com.byd.personnel.common.entity.PostSchoolEnrollmentEntity">
+        delete from post_school_enrollment
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="classType != null">
+                and class_type = #{classType,jdbcType=INTEGER}
+            </if>
+            <if test="recruitingType != null">
+                and recruiting_type = #{recruitingType,jdbcType=VARCHAR}
+            </if>
+            <if test="positionNumber != null">
+                and position_number = #{positionNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="businessDivision != null">
+                and business_division = #{businessDivision,jdbcType=VARCHAR}
+            </if>
+            <if test="organizationName != null">
+                and organization_name = #{organizationName,jdbcType=VARCHAR}
+            </if>
+            <if test="factory != null">
+                and factory = #{factory,jdbcType=VARCHAR}
+            </if>
+            <if test="department != null">
+                and department = #{department,jdbcType=VARCHAR}
+            </if>
+            <if test="sectionOffice != null">
+                and section_office = #{sectionOffice,jdbcType=VARCHAR}
+            </if>
+            <if test="headCount != null">
+                and head_count = #{headCount,jdbcType=INTEGER}
+            </if>
+            <if test="recruitedNumber != null">
+                and recruited_number = #{recruitedNumber,jdbcType=INTEGER}
+            </if>
+            <if test="checkedNumber != null">
+                and checked_number = #{checkedNumber,jdbcType=INTEGER}
+            </if>
+            <if test="positionCode != null">
+                and position_code = #{positionCode,jdbcType=VARCHAR}
+            </if>
+            <if test="positionName != null">
+                and position_name = #{positionName,jdbcType=VARCHAR}
+            </if>
+            <if test="positionLevel != null">
+                and position_level = #{positionLevel,jdbcType=VARCHAR}
+            </if>
+            <if test="recruitingLevel != null">
+                and recruiting_level = #{recruitingLevel,jdbcType=VARCHAR}
+            </if>
+            <if test="recruitingLevelSmall != null">
+                and recruiting_level_small = #{recruitingLevelSmall,jdbcType=VARCHAR}
+            </if>
+            <if test="positionDirection != null">
+                and position_direction = #{positionDirection,jdbcType=VARCHAR}
+            </if>
+            <if test="education != null">
+                and education = #{education,jdbcType=VARCHAR}
+            </if>
+            <if test="majorCategoryFirst != null">
+                and major_category_first = #{majorCategoryFirst,jdbcType=VARCHAR}
+            </if>
+            <if test="majorFirst != null">
+                and major_first = #{majorFirst,jdbcType=VARCHAR}
+            </if>
+            <if test="researchFirst != null">
+                and research_first = #{researchFirst,jdbcType=VARCHAR}
+            </if>
+            <if test="majorCategorySecond != null">
+                and major_category_second = #{majorCategorySecond,jdbcType=VARCHAR}
+            </if>
+            <if test="majorCategoryThird != null">
+                and major_category_third = #{majorCategoryThird,jdbcType=VARCHAR}
+            </if>
+            <if test="schoolClassify != null">
+                and school_classify = #{schoolClassify,jdbcType=VARCHAR}
+            </if>
+            <if test="schoolFirst != null">
+                and school_first = #{schoolFirst,jdbcType=VARCHAR}
+            </if>
+            <if test="schoolSecond != null">
+                and school_second = #{schoolSecond,jdbcType=VARCHAR}
+            </if>
+            <if test="workPlace != null">
+                and work_place = #{workPlace,jdbcType=VARCHAR}
+            </if>
+            <if test="foreignLanguage != null">
+                and foreign_language = #{foreignLanguage,jdbcType=VARCHAR}
+            </if>
+            <if test="sex != null">
+                and sex = #{sex,jdbcType=VARCHAR}
+            </if>
+            <if test="serviceProject != null">
+                and service_project = #{serviceProject,jdbcType=VARCHAR}
+            </if>
+            <if test="applyReason != null">
+                and apply_reason = #{applyReason,jdbcType=VARCHAR}
+            </if>
+            <if test="positionStatement != null">
+                and position_statement = #{positionStatement,jdbcType=VARCHAR}
+            </if>
+            <if test="recruitingRequire != null">
+                and recruiting_require = #{recruitingRequire,jdbcType=VARCHAR}
+            </if>
+            <if test="ortherRemark != null">
+                and orther_remark = #{ortherRemark,jdbcType=VARCHAR}
+            </if>
+            <if test="technicalSecond != null">
+                and technical_second = #{technicalSecond,jdbcType=VARCHAR}
+            </if>
+            <if test="doubleFlag != null">
+                and double_flag = #{doubleFlag,jdbcType=VARCHAR}
+            </if>
+            <if test="doubleOrganization != null">
+                and double_organization = #{doubleOrganization,jdbcType=VARCHAR}
+            </if>
+            <if test="closeTime != null">
+                and close_time = #{closeTime,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null">
+                and status = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="abandonNumber != null">
+                and abandon_number = #{abandonNumber,jdbcType=INTEGER}
+            </if>
+            <if test="abandonReason != null">
+                and abandon_reason = #{abandonReason,jdbcType=VARCHAR}
+            </if>
+            <if test="operatorName != null">
+                and operator_name = #{operatorName,jdbcType=VARCHAR}
+            </if>
+            <if test="positionDescribe != null">
+                and position_describe = #{positionDescribe,jdbcType=VARCHAR}
+            </if>
+            <if test="extend1 != null">
+                and extend1 = #{extend1,jdbcType=VARCHAR}
+            </if>
+            <if test="extend2 != null">
+                and extend2 = #{extend2,jdbcType=VARCHAR}
+            </if>
+            <if test="extend3 != null">
+                and extend3 = #{extend3,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </delete>
+    
+    <!--通过主键列表删除，列表长度不能为0-->
+    <delete id="deleteByIds" parameterType="list">
+        delete from post_school_enrollment where  in
+        <foreach item="item" collection="list" separator="," open="(" close=")" index="index">
+            #{item}
+        </foreach>
+    </delete>
+    
+    <select id="countAll" resultType="int">
+        select count(*) from post_school_enrollment
+    </select>
+    
+    <select id="countByEntity" parameterType="com.byd.personnel.common.entity.PostSchoolEnrollmentEntity" resultType="int">
+        select count(*) from post_school_enrollment
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="classType != null">
+                and class_type = #{classType,jdbcType=INTEGER}
+            </if>
+            <if test="recruitingType != null">
+                and recruiting_type = #{recruitingType,jdbcType=VARCHAR}
+            </if>
+            <if test="positionNumber != null">
+                and position_number = #{positionNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="businessDivision != null">
+                and business_division = #{businessDivision,jdbcType=VARCHAR}
+            </if>
+            <if test="organizationName != null">
+                and organization_name = #{organizationName,jdbcType=VARCHAR}
+            </if>
+            <if test="factory != null">
+                and factory = #{factory,jdbcType=VARCHAR}
+            </if>
+            <if test="department != null">
+                and department = #{department,jdbcType=VARCHAR}
+            </if>
+            <if test="sectionOffice != null">
+                and section_office = #{sectionOffice,jdbcType=VARCHAR}
+            </if>
+            <if test="headCount != null">
+                and head_count = #{headCount,jdbcType=INTEGER}
+            </if>
+            <if test="recruitedNumber != null">
+                and recruited_number = #{recruitedNumber,jdbcType=INTEGER}
+            </if>
+            <if test="checkedNumber != null">
+                and checked_number = #{checkedNumber,jdbcType=INTEGER}
+            </if>
+            <if test="positionCode != null">
+                and position_code = #{positionCode,jdbcType=VARCHAR}
+            </if>
+            <if test="positionName != null">
+                and position_name = #{positionName,jdbcType=VARCHAR}
+            </if>
+            <if test="positionLevel != null">
+                and position_level = #{positionLevel,jdbcType=VARCHAR}
+            </if>
+            <if test="recruitingLevel != null">
+                and recruiting_level = #{recruitingLevel,jdbcType=VARCHAR}
+            </if>
+            <if test="recruitingLevelSmall != null">
+                and recruiting_level_small = #{recruitingLevelSmall,jdbcType=VARCHAR}
+            </if>
+            <if test="positionDirection != null">
+                and position_direction = #{positionDirection,jdbcType=VARCHAR}
+            </if>
+            <if test="education != null">
+                and education = #{education,jdbcType=VARCHAR}
+            </if>
+            <if test="majorCategoryFirst != null">
+                and major_category_first = #{majorCategoryFirst,jdbcType=VARCHAR}
+            </if>
+            <if test="majorFirst != null">
+                and major_first = #{majorFirst,jdbcType=VARCHAR}
+            </if>
+            <if test="researchFirst != null">
+                and research_first = #{researchFirst,jdbcType=VARCHAR}
+            </if>
+            <if test="majorCategorySecond != null">
+                and major_category_second = #{majorCategorySecond,jdbcType=VARCHAR}
+            </if>
+            <if test="majorCategoryThird != null">
+                and major_category_third = #{majorCategoryThird,jdbcType=VARCHAR}
+            </if>
+            <if test="schoolClassify != null">
+                and school_classify = #{schoolClassify,jdbcType=VARCHAR}
+            </if>
+            <if test="schoolFirst != null">
+                and school_first = #{schoolFirst,jdbcType=VARCHAR}
+            </if>
+            <if test="schoolSecond != null">
+                and school_second = #{schoolSecond,jdbcType=VARCHAR}
+            </if>
+            <if test="workPlace != null">
+                and work_place = #{workPlace,jdbcType=VARCHAR}
+            </if>
+            <if test="foreignLanguage != null">
+                and foreign_language = #{foreignLanguage,jdbcType=VARCHAR}
+            </if>
+            <if test="sex != null">
+                and sex = #{sex,jdbcType=VARCHAR}
+            </if>
+            <if test="serviceProject != null">
+                and service_project = #{serviceProject,jdbcType=VARCHAR}
+            </if>
+            <if test="applyReason != null">
+                and apply_reason = #{applyReason,jdbcType=VARCHAR}
+            </if>
+            <if test="positionStatement != null">
+                and position_statement = #{positionStatement,jdbcType=VARCHAR}
+            </if>
+            <if test="recruitingRequire != null">
+                and recruiting_require = #{recruitingRequire,jdbcType=VARCHAR}
+            </if>
+            <if test="ortherRemark != null">
+                and orther_remark = #{ortherRemark,jdbcType=VARCHAR}
+            </if>
+            <if test="technicalSecond != null">
+                and technical_second = #{technicalSecond,jdbcType=VARCHAR}
+            </if>
+            <if test="doubleFlag != null">
+                and double_flag = #{doubleFlag,jdbcType=VARCHAR}
+            </if>
+            <if test="doubleOrganization != null">
+                and double_organization = #{doubleOrganization,jdbcType=VARCHAR}
+            </if>
+            <if test="closeTime != null">
+                and close_time = #{closeTime,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null">
+                and status = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="abandonNumber != null">
+                and abandon_number = #{abandonNumber,jdbcType=INTEGER}
+            </if>
+            <if test="abandonReason != null">
+                and abandon_reason = #{abandonReason,jdbcType=VARCHAR}
+            </if>
+            <if test="operatorName != null">
+                and operator_name = #{operatorName,jdbcType=VARCHAR}
+            </if>
+            <if test="positionDescribe != null">
+                and position_describe = #{positionDescribe,jdbcType=VARCHAR}
+            </if>
+            <if test="extend1 != null">
+                and extend1 = #{extend1,jdbcType=VARCHAR}
+            </if>
+            <if test="extend2 != null">
+                and extend2 = #{extend2,jdbcType=VARCHAR}
+            </if>
+            <if test="extend3 != null">
+                and extend3 = #{extend3,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+</mapper>

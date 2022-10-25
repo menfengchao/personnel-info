@@ -1,0 +1,2139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byd.personnel.dao.mapper.FreshStudentsInfoMapper">
+
+    <resultMap type="com.byd.personnel.common.entity.FreshStudentsInfoEntity" id="FreshStudentsInfoResultMap">
+        <result property="id" column="id" jdbcType="BIGINT"/>
+        <result property="infoRegistrationNo" column="info_registration_no" jdbcType="VARCHAR"/>
+        <result property="infoName" column="info_name" jdbcType="VARCHAR"/>
+        <result property="infoSex" column="info_sex" jdbcType="INTEGER"/>
+        <result property="infoGraduationSchool" column="info_graduation_school" jdbcType="VARCHAR"/>
+        <result property="infoMajor" column="info_major" jdbcType="VARCHAR"/>
+        <result property="infoHighestEducation" column="info_highest_education" jdbcType="VARCHAR"/>
+        <result property="infoPhone" column="info_phone" jdbcType="VARCHAR"/>
+        <result property="infoMailbox" column="info_mailbox" jdbcType="VARCHAR"/>
+        <result property="infoNativePlace" column="info_native_place" jdbcType="VARCHAR"/>
+        <result property="infoWorkPlace" column="info_work_place" jdbcType="VARCHAR"/>
+        <result property="infoIntendedPost" column="info_intended_post" jdbcType="VARCHAR"/>
+        <result property="infoCreateTime" column="info_create_time" jdbcType="OTHER"/>
+        <result property="infoCreateName" column="info_create_name" jdbcType="VARCHAR"/>
+        <result property="infoInterviewTime" column="info_interview_time" jdbcType="OTHER"/>
+        <result property="infoPersonnelInterview" column="info_personnel_interview" jdbcType="VARCHAR"/>
+        <result property="infoPersonnelScore" column="info_personnel_score" jdbcType="VARCHAR"/>
+        <result property="infoPersonnelName" column="info_personnel_name" jdbcType="VARCHAR"/>
+        <result property="infoDeptment" column="info_deptment" jdbcType="VARCHAR"/>
+        <result property="infoPushDepartment" column="info_push_department" jdbcType="VARCHAR"/>
+        <result property="infoPushName" column="info_push_name" jdbcType="VARCHAR"/>
+        <result property="infoPushTime" column="info_push_time" jdbcType="VARCHAR"/>
+        <result property="infoResumePusher" column="info_resume_pusher" jdbcType="VARCHAR"/>
+        <result property="postSectionOffice" column="post_section_office" jdbcType="VARCHAR"/>
+        <result property="postActualPosition" column="post_actual_position" jdbcType="VARCHAR"/>
+        <result property="postDuty" column="post_duty" jdbcType="VARCHAR"/>
+        <result property="technicalInterview" column="technical_interview" jdbcType="VARCHAR"/>
+        <result property="technicalScore" column="technical_score" jdbcType="VARCHAR"/>
+        <result property="technicalName" column="technical_name" jdbcType="VARCHAR"/>
+        <result property="stuSchoolReport" column="stu_school_report" jdbcType="VARCHAR"/>
+        <result property="stuCet4" column="stu_cet4" jdbcType="VARCHAR"/>
+        <result property="stuEducationReport" column="stu_education_report" jdbcType="VARCHAR"/>
+        <result property="stuOther" column="stu_other" jdbcType="VARCHAR"/>
+        <result property="auditLastTime" column="audit_last_time" jdbcType="OTHER"/>
+        <result property="auditName" column="audit_name" jdbcType="VARCHAR"/>
+        <result property="auditStatus" column="audit_status" jdbcType="VARCHAR"/>
+        <result property="auditRemark" column="audit_remark" jdbcType="VARCHAR"/>
+        <result property="signStatus" column="sign_status" jdbcType="VARCHAR"/>
+        <result property="signEmploymentForm" column="sign_employment_form" jdbcType="VARCHAR"/>
+        <result property="signTime" column="sign_time" jdbcType="OTHER"/>
+        <result property="signName" column="sign_name" jdbcType="VARCHAR"/>
+        <result property="salaryTime" column="salary_time" jdbcType="OTHER"/>
+        <result property="salaryName" column="salary_name" jdbcType="VARCHAR"/>
+        <result property="offerTime" column="offer_time" jdbcType="OTHER"/>
+        <result property="offerSendName" column="offer_send_name" jdbcType="VARCHAR"/>
+        <result property="followSign" column="follow_sign" jdbcType="VARCHAR"/>
+        <result property="followSignTime" column="follow_sign_time" jdbcType="OTHER"/>
+        <result property="followSignName" column="follow_sign_name" jdbcType="VARCHAR"/>
+        <result property="followMeans" column="follow_means" jdbcType="VARCHAR"/>
+        <result property="followMeansTime" column="follow_means_time" jdbcType="OTHER"/>
+        <result property="followMeansName" column="follow_means_name" jdbcType="VARCHAR"/>
+        <result property="defaultStatus" column="default_status" jdbcType="INTEGER"/>
+        <result property="defaultExplain" column="default_explain" jdbcType="VARCHAR"/>
+        <result property="defaultTime" column="default_time" jdbcType="OTHER"/>
+        <result property="defaultName" column="default_name" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="entend1" column="entend1" jdbcType="VARCHAR"/>
+        <result property="entend2" column="entend2" jdbcType="VARCHAR"/>
+        <result property="entend3" column="entend3" jdbcType="VARCHAR"/>
+        <result property="entend4" column="entend4" jdbcType="VARCHAR"/>
+        <result property="entend5" column="entend5" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="table_field">
+      id, info_registration_no, info_name, info_sex, info_graduation_school, info_major, info_highest_education, info_phone, info_mailbox, info_native_place, info_work_place, info_intended_post, info_create_time, info_create_name, info_interview_time, info_personnel_interview, info_personnel_score, info_personnel_name, info_deptment, info_push_department, info_push_name, info_push_time, info_resume_pusher, post_section_office, post_actual_position, post_duty, technical_interview, technical_score, technical_name, stu_school_report, stu_cet4, stu_education_report, stu_other, audit_last_time, audit_name, audit_status, audit_remark, sign_status, sign_employment_form, sign_time, sign_name, salary_time, salary_name, offer_time, offer_send_name, follow_sign, follow_sign_time, follow_sign_name, follow_means, follow_means_time, follow_means_name, default_status, default_explain, default_time, default_name, status, entend1, entend2, entend3, entend4, entend5      
+    </sql>
+       
+    <!--通过Id查询单个-->
+    <select id="getById" resultMap="FreshStudentsInfoResultMap" parameterType="java.lang.Long">
+        select
+          <include refid="table_field" />
+        from fresh_students_info
+        where  id= #{id,jdbcType=BIGINT}
+    </select>
+
+
+    <!--通过实体不为空的属性作为筛选条件查询列表-->
+    <select id="listByEntity" resultMap="FreshStudentsInfoResultMap" parameterType="com.byd.personnel.common.entity.FreshStudentsInfoEntity">
+        select
+          <include refid="table_field" />
+        from fresh_students_info
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="infoRegistrationNo != null">
+                and info_registration_no = #{infoRegistrationNo,jdbcType=VARCHAR}
+            </if>
+            <if test="infoName != null">
+                and info_name = #{infoName,jdbcType=VARCHAR}
+            </if>
+            <if test="infoSex != null">
+                and info_sex = #{infoSex,jdbcType=INTEGER}
+            </if>
+            <if test="infoGraduationSchool != null">
+                and info_graduation_school = #{infoGraduationSchool,jdbcType=VARCHAR}
+            </if>
+            <if test="infoMajor != null">
+                and info_major = #{infoMajor,jdbcType=VARCHAR}
+            </if>
+            <if test="infoHighestEducation != null">
+                and info_highest_education = #{infoHighestEducation,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPhone != null">
+                and info_phone = #{infoPhone,jdbcType=VARCHAR}
+            </if>
+            <if test="infoMailbox != null">
+                and info_mailbox = #{infoMailbox,jdbcType=VARCHAR}
+            </if>
+            <if test="infoNativePlace != null">
+                and info_native_place = #{infoNativePlace,jdbcType=VARCHAR}
+            </if>
+            <if test="infoWorkPlace != null">
+                and info_work_place = #{infoWorkPlace,jdbcType=VARCHAR}
+            </if>
+            <if test="infoIntendedPost != null">
+                and info_intended_post = #{infoIntendedPost,jdbcType=VARCHAR}
+            </if>
+            <if test="infoCreateTime != null">
+                and info_create_time = #{infoCreateTime,jdbcType=OTHER}
+            </if>
+            <if test="infoCreateName != null">
+                and info_create_name = #{infoCreateName,jdbcType=VARCHAR}
+            </if>
+            <if test="infoInterviewTime != null">
+                and info_interview_time = #{infoInterviewTime,jdbcType=OTHER}
+            </if>
+            <if test="infoPersonnelInterview != null">
+                and info_personnel_interview = #{infoPersonnelInterview,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPersonnelScore != null">
+                and info_personnel_score = #{infoPersonnelScore,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPersonnelName != null">
+                and info_personnel_name = #{infoPersonnelName,jdbcType=VARCHAR}
+            </if>
+            <if test="infoDeptment != null">
+                and info_deptment = #{infoDeptment,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPushDepartment != null">
+                and info_push_department = #{infoPushDepartment,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPushName != null">
+                and info_push_name = #{infoPushName,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPushTime != null">
+                and info_push_time = #{infoPushTime,jdbcType=VARCHAR}
+            </if>
+            <if test="infoResumePusher != null">
+                and info_resume_pusher = #{infoResumePusher,jdbcType=VARCHAR}
+            </if>
+            <if test="postSectionOffice != null">
+                and post_section_office = #{postSectionOffice,jdbcType=VARCHAR}
+            </if>
+            <if test="postActualPosition != null">
+                and post_actual_position = #{postActualPosition,jdbcType=VARCHAR}
+            </if>
+            <if test="postDuty != null">
+                and post_duty = #{postDuty,jdbcType=VARCHAR}
+            </if>
+            <if test="technicalInterview != null">
+                and technical_interview = #{technicalInterview,jdbcType=VARCHAR}
+            </if>
+            <if test="technicalScore != null">
+                and technical_score = #{technicalScore,jdbcType=VARCHAR}
+            </if>
+            <if test="technicalName != null">
+                and technical_name = #{technicalName,jdbcType=VARCHAR}
+            </if>
+            <if test="stuSchoolReport != null">
+                and stu_school_report = #{stuSchoolReport,jdbcType=VARCHAR}
+            </if>
+            <if test="stuCet4 != null">
+                and stu_cet4 = #{stuCet4,jdbcType=VARCHAR}
+            </if>
+            <if test="stuEducationReport != null">
+                and stu_education_report = #{stuEducationReport,jdbcType=VARCHAR}
+            </if>
+            <if test="stuOther != null">
+                and stu_other = #{stuOther,jdbcType=VARCHAR}
+            </if>
+            <if test="auditLastTime != null">
+                and audit_last_time = #{auditLastTime,jdbcType=OTHER}
+            </if>
+            <if test="auditName != null">
+                and audit_name = #{auditName,jdbcType=VARCHAR}
+            </if>
+            <if test="auditStatus != null">
+                and audit_status = #{auditStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="auditRemark != null">
+                and audit_remark = #{auditRemark,jdbcType=VARCHAR}
+            </if>
+            <if test="signStatus != null">
+                and sign_status = #{signStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="signEmploymentForm != null">
+                and sign_employment_form = #{signEmploymentForm,jdbcType=VARCHAR}
+            </if>
+            <if test="signTime != null">
+                and sign_time = #{signTime,jdbcType=OTHER}
+            </if>
+            <if test="signName != null">
+                and sign_name = #{signName,jdbcType=VARCHAR}
+            </if>
+            <if test="salaryTime != null">
+                and salary_time = #{salaryTime,jdbcType=OTHER}
+            </if>
+            <if test="salaryName != null">
+                and salary_name = #{salaryName,jdbcType=VARCHAR}
+            </if>
+            <if test="offerTime != null">
+                and offer_time = #{offerTime,jdbcType=OTHER}
+            </if>
+            <if test="offerSendName != null">
+                and offer_send_name = #{offerSendName,jdbcType=VARCHAR}
+            </if>
+            <if test="followSign != null">
+                and follow_sign = #{followSign,jdbcType=VARCHAR}
+            </if>
+            <if test="followSignTime != null">
+                and follow_sign_time = #{followSignTime,jdbcType=OTHER}
+            </if>
+            <if test="followSignName != null">
+                and follow_sign_name = #{followSignName,jdbcType=VARCHAR}
+            </if>
+            <if test="followMeans != null">
+                and follow_means = #{followMeans,jdbcType=VARCHAR}
+            </if>
+            <if test="followMeansTime != null">
+                and follow_means_time = #{followMeansTime,jdbcType=OTHER}
+            </if>
+            <if test="followMeansName != null">
+                and follow_means_name = #{followMeansName,jdbcType=VARCHAR}
+            </if>
+            <if test="defaultStatus != null">
+                and default_status = #{defaultStatus,jdbcType=INTEGER}
+            </if>
+            <if test="defaultExplain != null">
+                and default_explain = #{defaultExplain,jdbcType=VARCHAR}
+            </if>
+            <if test="defaultTime != null">
+                and default_time = #{defaultTime,jdbcType=OTHER}
+            </if>
+            <if test="defaultName != null">
+                and default_name = #{defaultName,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null">
+                and status = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="entend1 != null">
+                and entend1 = #{entend1,jdbcType=VARCHAR}
+            </if>
+            <if test="entend2 != null">
+                and entend2 = #{entend2,jdbcType=VARCHAR}
+            </if>
+            <if test="entend3 != null">
+                and entend3 = #{entend3,jdbcType=VARCHAR}
+            </if>
+            <if test="entend4 != null">
+                and entend4 = #{entend4,jdbcType=VARCHAR}
+            </if>
+            <if test="entend5 != null">
+                and entend5 = #{entend5,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <!--通过实体不为空的属性作为筛选条件查询单个-->
+    <select id="getByEntity" resultMap="FreshStudentsInfoResultMap" parameterType="com.byd.personnel.common.entity.FreshStudentsInfoEntity">
+        select
+          <include refid="table_field" />
+        from fresh_students_info
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="infoRegistrationNo != null">
+                and info_registration_no = #{infoRegistrationNo,jdbcType=VARCHAR}
+            </if>
+            <if test="infoName != null">
+                and info_name = #{infoName,jdbcType=VARCHAR}
+            </if>
+            <if test="infoSex != null">
+                and info_sex = #{infoSex,jdbcType=INTEGER}
+            </if>
+            <if test="infoGraduationSchool != null">
+                and info_graduation_school = #{infoGraduationSchool,jdbcType=VARCHAR}
+            </if>
+            <if test="infoMajor != null">
+                and info_major = #{infoMajor,jdbcType=VARCHAR}
+            </if>
+            <if test="infoHighestEducation != null">
+                and info_highest_education = #{infoHighestEducation,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPhone != null">
+                and info_phone = #{infoPhone,jdbcType=VARCHAR}
+            </if>
+            <if test="infoMailbox != null">
+                and info_mailbox = #{infoMailbox,jdbcType=VARCHAR}
+            </if>
+            <if test="infoNativePlace != null">
+                and info_native_place = #{infoNativePlace,jdbcType=VARCHAR}
+            </if>
+            <if test="infoWorkPlace != null">
+                and info_work_place = #{infoWorkPlace,jdbcType=VARCHAR}
+            </if>
+            <if test="infoIntendedPost != null">
+                and info_intended_post = #{infoIntendedPost,jdbcType=VARCHAR}
+            </if>
+            <if test="infoCreateTime != null">
+                and info_create_time = #{infoCreateTime,jdbcType=OTHER}
+            </if>
+            <if test="infoCreateName != null">
+                and info_create_name = #{infoCreateName,jdbcType=VARCHAR}
+            </if>
+            <if test="infoInterviewTime != null">
+                and info_interview_time = #{infoInterviewTime,jdbcType=OTHER}
+            </if>
+            <if test="infoPersonnelInterview != null">
+                and info_personnel_interview = #{infoPersonnelInterview,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPersonnelScore != null">
+                and info_personnel_score = #{infoPersonnelScore,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPersonnelName != null">
+                and info_personnel_name = #{infoPersonnelName,jdbcType=VARCHAR}
+            </if>
+            <if test="infoDeptment != null">
+                and info_deptment = #{infoDeptment,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPushDepartment != null">
+                and info_push_department = #{infoPushDepartment,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPushName != null">
+                and info_push_name = #{infoPushName,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPushTime != null">
+                and info_push_time = #{infoPushTime,jdbcType=VARCHAR}
+            </if>
+            <if test="infoResumePusher != null">
+                and info_resume_pusher = #{infoResumePusher,jdbcType=VARCHAR}
+            </if>
+            <if test="postSectionOffice != null">
+                and post_section_office = #{postSectionOffice,jdbcType=VARCHAR}
+            </if>
+            <if test="postActualPosition != null">
+                and post_actual_position = #{postActualPosition,jdbcType=VARCHAR}
+            </if>
+            <if test="postDuty != null">
+                and post_duty = #{postDuty,jdbcType=VARCHAR}
+            </if>
+            <if test="technicalInterview != null">
+                and technical_interview = #{technicalInterview,jdbcType=VARCHAR}
+            </if>
+            <if test="technicalScore != null">
+                and technical_score = #{technicalScore,jdbcType=VARCHAR}
+            </if>
+            <if test="technicalName != null">
+                and technical_name = #{technicalName,jdbcType=VARCHAR}
+            </if>
+            <if test="stuSchoolReport != null">
+                and stu_school_report = #{stuSchoolReport,jdbcType=VARCHAR}
+            </if>
+            <if test="stuCet4 != null">
+                and stu_cet4 = #{stuCet4,jdbcType=VARCHAR}
+            </if>
+            <if test="stuEducationReport != null">
+                and stu_education_report = #{stuEducationReport,jdbcType=VARCHAR}
+            </if>
+            <if test="stuOther != null">
+                and stu_other = #{stuOther,jdbcType=VARCHAR}
+            </if>
+            <if test="auditLastTime != null">
+                and audit_last_time = #{auditLastTime,jdbcType=OTHER}
+            </if>
+            <if test="auditName != null">
+                and audit_name = #{auditName,jdbcType=VARCHAR}
+            </if>
+            <if test="auditStatus != null">
+                and audit_status = #{auditStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="auditRemark != null">
+                and audit_remark = #{auditRemark,jdbcType=VARCHAR}
+            </if>
+            <if test="signStatus != null">
+                and sign_status = #{signStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="signEmploymentForm != null">
+                and sign_employment_form = #{signEmploymentForm,jdbcType=VARCHAR}
+            </if>
+            <if test="signTime != null">
+                and sign_time = #{signTime,jdbcType=OTHER}
+            </if>
+            <if test="signName != null">
+                and sign_name = #{signName,jdbcType=VARCHAR}
+            </if>
+            <if test="salaryTime != null">
+                and salary_time = #{salaryTime,jdbcType=OTHER}
+            </if>
+            <if test="salaryName != null">
+                and salary_name = #{salaryName,jdbcType=VARCHAR}
+            </if>
+            <if test="offerTime != null">
+                and offer_time = #{offerTime,jdbcType=OTHER}
+            </if>
+            <if test="offerSendName != null">
+                and offer_send_name = #{offerSendName,jdbcType=VARCHAR}
+            </if>
+            <if test="followSign != null">
+                and follow_sign = #{followSign,jdbcType=VARCHAR}
+            </if>
+            <if test="followSignTime != null">
+                and follow_sign_time = #{followSignTime,jdbcType=OTHER}
+            </if>
+            <if test="followSignName != null">
+                and follow_sign_name = #{followSignName,jdbcType=VARCHAR}
+            </if>
+            <if test="followMeans != null">
+                and follow_means = #{followMeans,jdbcType=VARCHAR}
+            </if>
+            <if test="followMeansTime != null">
+                and follow_means_time = #{followMeansTime,jdbcType=OTHER}
+            </if>
+            <if test="followMeansName != null">
+                and follow_means_name = #{followMeansName,jdbcType=VARCHAR}
+            </if>
+            <if test="defaultStatus != null">
+                and default_status = #{defaultStatus,jdbcType=INTEGER}
+            </if>
+            <if test="defaultExplain != null">
+                and default_explain = #{defaultExplain,jdbcType=VARCHAR}
+            </if>
+            <if test="defaultTime != null">
+                and default_time = #{defaultTime,jdbcType=OTHER}
+            </if>
+            <if test="defaultName != null">
+                and default_name = #{defaultName,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null">
+                and status = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="entend1 != null">
+                and entend1 = #{entend1,jdbcType=VARCHAR}
+            </if>
+            <if test="entend2 != null">
+                and entend2 = #{entend2,jdbcType=VARCHAR}
+            </if>
+            <if test="entend3 != null">
+                and entend3 = #{entend3,jdbcType=VARCHAR}
+            </if>
+            <if test="entend4 != null">
+                and entend4 = #{entend4,jdbcType=VARCHAR}
+            </if>
+            <if test="entend5 != null">
+                and entend5 = #{entend5,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <!--通过Id列表作为筛选条件查询列表，列表长度不为0-->
+    <select id="listByIds" resultMap="FreshStudentsInfoResultMap" parameterType="list">
+        select
+          <include refid="table_field" />
+        from fresh_students_info
+        where  in
+        <foreach item="item" collection="list" separator="," open="(" close=")" index="index">
+            #{item}
+        </foreach>
+    </select>
+
+    <!--新增实体属性不为null的列-->
+    <insert id="insert" keyProperty="" useGeneratedKeys="true" parameterType="com.byd.personnel.common.entity.FreshStudentsInfoEntity">
+        insert into fresh_students_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+          <if test="id != null">
+             id,
+          </if>
+          <if test="infoRegistrationNo != null">
+             info_registration_no,
+          </if>
+          <if test="infoName != null">
+             info_name,
+          </if>
+          <if test="infoSex != null">
+             info_sex,
+          </if>
+          <if test="infoGraduationSchool != null">
+             info_graduation_school,
+          </if>
+          <if test="infoMajor != null">
+             info_major,
+          </if>
+          <if test="infoHighestEducation != null">
+             info_highest_education,
+          </if>
+          <if test="infoPhone != null">
+             info_phone,
+          </if>
+          <if test="infoMailbox != null">
+             info_mailbox,
+          </if>
+          <if test="infoNativePlace != null">
+             info_native_place,
+          </if>
+          <if test="infoWorkPlace != null">
+             info_work_place,
+          </if>
+          <if test="infoIntendedPost != null">
+             info_intended_post,
+          </if>
+          <if test="infoCreateTime != null">
+             info_create_time,
+          </if>
+          <if test="infoCreateName != null">
+             info_create_name,
+          </if>
+          <if test="infoInterviewTime != null">
+             info_interview_time,
+          </if>
+          <if test="infoPersonnelInterview != null">
+             info_personnel_interview,
+          </if>
+          <if test="infoPersonnelScore != null">
+             info_personnel_score,
+          </if>
+          <if test="infoPersonnelName != null">
+             info_personnel_name,
+          </if>
+          <if test="infoDeptment != null">
+             info_deptment,
+          </if>
+          <if test="infoPushDepartment != null">
+             info_push_department,
+          </if>
+          <if test="infoPushName != null">
+             info_push_name,
+          </if>
+          <if test="infoPushTime != null">
+             info_push_time,
+          </if>
+          <if test="infoResumePusher != null">
+             info_resume_pusher,
+          </if>
+          <if test="postSectionOffice != null">
+             post_section_office,
+          </if>
+          <if test="postActualPosition != null">
+             post_actual_position,
+          </if>
+          <if test="postDuty != null">
+             post_duty,
+          </if>
+          <if test="technicalInterview != null">
+             technical_interview,
+          </if>
+          <if test="technicalScore != null">
+             technical_score,
+          </if>
+          <if test="technicalName != null">
+             technical_name,
+          </if>
+          <if test="stuSchoolReport != null">
+             stu_school_report,
+          </if>
+          <if test="stuCet4 != null">
+             stu_cet4,
+          </if>
+          <if test="stuEducationReport != null">
+             stu_education_report,
+          </if>
+          <if test="stuOther != null">
+             stu_other,
+          </if>
+          <if test="auditLastTime != null">
+             audit_last_time,
+          </if>
+          <if test="auditName != null">
+             audit_name,
+          </if>
+          <if test="auditStatus != null">
+             audit_status,
+          </if>
+          <if test="auditRemark != null">
+             audit_remark,
+          </if>
+          <if test="signStatus != null">
+             sign_status,
+          </if>
+          <if test="signEmploymentForm != null">
+             sign_employment_form,
+          </if>
+          <if test="signTime != null">
+             sign_time,
+          </if>
+          <if test="signName != null">
+             sign_name,
+          </if>
+          <if test="salaryTime != null">
+             salary_time,
+          </if>
+          <if test="salaryName != null">
+             salary_name,
+          </if>
+          <if test="offerTime != null">
+             offer_time,
+          </if>
+          <if test="offerSendName != null">
+             offer_send_name,
+          </if>
+          <if test="followSign != null">
+             follow_sign,
+          </if>
+          <if test="followSignTime != null">
+             follow_sign_time,
+          </if>
+          <if test="followSignName != null">
+             follow_sign_name,
+          </if>
+          <if test="followMeans != null">
+             follow_means,
+          </if>
+          <if test="followMeansTime != null">
+             follow_means_time,
+          </if>
+          <if test="followMeansName != null">
+             follow_means_name,
+          </if>
+          <if test="defaultStatus != null">
+             default_status,
+          </if>
+          <if test="defaultExplain != null">
+             default_explain,
+          </if>
+          <if test="defaultTime != null">
+             default_time,
+          </if>
+          <if test="defaultName != null">
+             default_name,
+          </if>
+          <if test="status != null">
+             status,
+          </if>
+          <if test="entend1 != null">
+             entend1,
+          </if>
+          <if test="entend2 != null">
+             entend2,
+          </if>
+          <if test="entend3 != null">
+             entend3,
+          </if>
+          <if test="entend4 != null">
+             entend4,
+          </if>
+          <if test="entend5 != null">
+             entend5,
+          </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+          <if test="id != null">
+             #{id,jdbcType=INTEGER},
+          </if>
+          <if test="infoRegistrationNo != null">
+             #{infoRegistrationNo,jdbcType=VARCHAR},
+          </if>
+          <if test="infoName != null">
+             #{infoName,jdbcType=VARCHAR},
+          </if>
+          <if test="infoSex != null">
+             #{infoSex,jdbcType=INTEGER},
+          </if>
+          <if test="infoGraduationSchool != null">
+             #{infoGraduationSchool,jdbcType=VARCHAR},
+          </if>
+          <if test="infoMajor != null">
+             #{infoMajor,jdbcType=VARCHAR},
+          </if>
+          <if test="infoHighestEducation != null">
+             #{infoHighestEducation,jdbcType=VARCHAR},
+          </if>
+          <if test="infoPhone != null">
+             #{infoPhone,jdbcType=VARCHAR},
+          </if>
+          <if test="infoMailbox != null">
+             #{infoMailbox,jdbcType=VARCHAR},
+          </if>
+          <if test="infoNativePlace != null">
+             #{infoNativePlace,jdbcType=VARCHAR},
+          </if>
+          <if test="infoWorkPlace != null">
+             #{infoWorkPlace,jdbcType=VARCHAR},
+          </if>
+          <if test="infoIntendedPost != null">
+             #{infoIntendedPost,jdbcType=VARCHAR},
+          </if>
+          <if test="infoCreateTime != null">
+             #{infoCreateTime,jdbcType=OTHER},
+          </if>
+          <if test="infoCreateName != null">
+             #{infoCreateName,jdbcType=VARCHAR},
+          </if>
+          <if test="infoInterviewTime != null">
+             #{infoInterviewTime,jdbcType=OTHER},
+          </if>
+          <if test="infoPersonnelInterview != null">
+             #{infoPersonnelInterview,jdbcType=VARCHAR},
+          </if>
+          <if test="infoPersonnelScore != null">
+             #{infoPersonnelScore,jdbcType=VARCHAR},
+          </if>
+          <if test="infoPersonnelName != null">
+             #{infoPersonnelName,jdbcType=VARCHAR},
+          </if>
+          <if test="infoDeptment != null">
+             #{infoDeptment,jdbcType=VARCHAR},
+          </if>
+          <if test="infoPushDepartment != null">
+             #{infoPushDepartment,jdbcType=VARCHAR},
+          </if>
+          <if test="infoPushName != null">
+             #{infoPushName,jdbcType=VARCHAR},
+          </if>
+          <if test="infoPushTime != null">
+             #{infoPushTime,jdbcType=VARCHAR},
+          </if>
+          <if test="infoResumePusher != null">
+             #{infoResumePusher,jdbcType=VARCHAR},
+          </if>
+          <if test="postSectionOffice != null">
+             #{postSectionOffice,jdbcType=VARCHAR},
+          </if>
+          <if test="postActualPosition != null">
+             #{postActualPosition,jdbcType=VARCHAR},
+          </if>
+          <if test="postDuty != null">
+             #{postDuty,jdbcType=VARCHAR},
+          </if>
+          <if test="technicalInterview != null">
+             #{technicalInterview,jdbcType=VARCHAR},
+          </if>
+          <if test="technicalScore != null">
+             #{technicalScore,jdbcType=VARCHAR},
+          </if>
+          <if test="technicalName != null">
+             #{technicalName,jdbcType=VARCHAR},
+          </if>
+          <if test="stuSchoolReport != null">
+             #{stuSchoolReport,jdbcType=VARCHAR},
+          </if>
+          <if test="stuCet4 != null">
+             #{stuCet4,jdbcType=VARCHAR},
+          </if>
+          <if test="stuEducationReport != null">
+             #{stuEducationReport,jdbcType=VARCHAR},
+          </if>
+          <if test="stuOther != null">
+             #{stuOther,jdbcType=VARCHAR},
+          </if>
+          <if test="auditLastTime != null">
+             #{auditLastTime,jdbcType=OTHER},
+          </if>
+          <if test="auditName != null">
+             #{auditName,jdbcType=VARCHAR},
+          </if>
+          <if test="auditStatus != null">
+             #{auditStatus,jdbcType=VARCHAR},
+          </if>
+          <if test="auditRemark != null">
+             #{auditRemark,jdbcType=VARCHAR},
+          </if>
+          <if test="signStatus != null">
+             #{signStatus,jdbcType=VARCHAR},
+          </if>
+          <if test="signEmploymentForm != null">
+             #{signEmploymentForm,jdbcType=VARCHAR},
+          </if>
+          <if test="signTime != null">
+             #{signTime,jdbcType=OTHER},
+          </if>
+          <if test="signName != null">
+             #{signName,jdbcType=VARCHAR},
+          </if>
+          <if test="salaryTime != null">
+             #{salaryTime,jdbcType=OTHER},
+          </if>
+          <if test="salaryName != null">
+             #{salaryName,jdbcType=VARCHAR},
+          </if>
+          <if test="offerTime != null">
+             #{offerTime,jdbcType=OTHER},
+          </if>
+          <if test="offerSendName != null">
+             #{offerSendName,jdbcType=VARCHAR},
+          </if>
+          <if test="followSign != null">
+             #{followSign,jdbcType=VARCHAR},
+          </if>
+          <if test="followSignTime != null">
+             #{followSignTime,jdbcType=OTHER},
+          </if>
+          <if test="followSignName != null">
+             #{followSignName,jdbcType=VARCHAR},
+          </if>
+          <if test="followMeans != null">
+             #{followMeans,jdbcType=VARCHAR},
+          </if>
+          <if test="followMeansTime != null">
+             #{followMeansTime,jdbcType=OTHER},
+          </if>
+          <if test="followMeansName != null">
+             #{followMeansName,jdbcType=VARCHAR},
+          </if>
+          <if test="defaultStatus != null">
+             #{defaultStatus,jdbcType=INTEGER},
+          </if>
+          <if test="defaultExplain != null">
+             #{defaultExplain,jdbcType=VARCHAR},
+          </if>
+          <if test="defaultTime != null">
+             #{defaultTime,jdbcType=OTHER},
+          </if>
+          <if test="defaultName != null">
+             #{defaultName,jdbcType=VARCHAR},
+          </if>
+          <if test="status != null">
+             #{status,jdbcType=VARCHAR},
+          </if>
+          <if test="entend1 != null">
+             #{entend1,jdbcType=VARCHAR},
+          </if>
+          <if test="entend2 != null">
+             #{entend2,jdbcType=VARCHAR},
+          </if>
+          <if test="entend3 != null">
+             #{entend3,jdbcType=VARCHAR},
+          </if>
+          <if test="entend4 != null">
+             #{entend4,jdbcType=VARCHAR},
+          </if>
+          <if test="entend5 != null">
+             #{entend5,jdbcType=VARCHAR},
+          </if>
+        </trim>
+    </insert>
+
+    <!--批量新增所有列，列表长度不能为0，且列表id统一为null或者统一不为null-->
+    <insert id="insertBatch" keyProperty="" useGeneratedKeys="true" parameterType="list">
+        insert into fresh_students_info
+         (id, info_registration_no, info_name, info_sex, info_graduation_school, info_major, info_highest_education, info_phone, info_mailbox, info_native_place, info_work_place, info_intended_post, info_create_time, info_create_name, info_interview_time, info_personnel_interview, info_personnel_score, info_personnel_name, info_deptment, info_push_department, info_push_name, info_push_time, info_resume_pusher, post_section_office, post_actual_position, post_duty, technical_interview, technical_score, technical_name, stu_school_report, stu_cet4, stu_education_report, stu_other, audit_last_time, audit_name, audit_status, audit_remark, sign_status, sign_employment_form, sign_time, sign_name, salary_time, salary_name, offer_time, offer_send_name, follow_sign, follow_sign_time, follow_sign_name, follow_means, follow_means_time, follow_means_name, default_status, default_explain, default_time, default_name, status, entend1, entend2, entend3, entend4, entend5)
+        values
+        <foreach item="item" collection="list" separator="," open="" close="" index="index">
+         (#{item.id}, #{item.infoRegistrationNo}, #{item.infoName}, #{item.infoSex}, #{item.infoGraduationSchool}, #{item.infoMajor}, #{item.infoHighestEducation}, #{item.infoPhone}, #{item.infoMailbox}, #{item.infoNativePlace}, #{item.infoWorkPlace}, #{item.infoIntendedPost}, #{item.infoCreateTime}, #{item.infoCreateName}, #{item.infoInterviewTime}, #{item.infoPersonnelInterview}, #{item.infoPersonnelScore}, #{item.infoPersonnelName}, #{item.infoDeptment}, #{item.infoPushDepartment}, #{item.infoPushName}, #{item.infoPushTime}, #{item.infoResumePusher}, #{item.postSectionOffice}, #{item.postActualPosition}, #{item.postDuty}, #{item.technicalInterview}, #{item.technicalScore}, #{item.technicalName}, #{item.stuSchoolReport}, #{item.stuCet4}, #{item.stuEducationReport}, #{item.stuOther}, #{item.auditLastTime}, #{item.auditName}, #{item.auditStatus}, #{item.auditRemark}, #{item.signStatus}, #{item.signEmploymentForm}, #{item.signTime}, #{item.signName}, #{item.salaryTime}, #{item.salaryName}, #{item.offerTime}, #{item.offerSendName}, #{item.followSign}, #{item.followSignTime}, #{item.followSignName}, #{item.followMeans}, #{item.followMeansTime}, #{item.followMeansName}, #{item.defaultStatus}, #{item.defaultExplain}, #{item.defaultTime}, #{item.defaultName}, #{item.status}, #{item.entend1}, #{item.entend2}, #{item.entend3}, #{item.entend4}, #{item.entend5})
+        </foreach>
+    </insert>
+
+    <!--通过主键修改实体属性不为null的列-->
+    <update id="update" parameterType="com.byd.personnel.common.entity.FreshStudentsInfoEntity">
+        update fresh_students_info
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="infoRegistrationNo != null and infoRegistrationNo != ''">
+                info_registration_no = #{infoRegistrationNo,jdbcType=VARCHAR},
+            </if>
+            <if test="infoName != null and infoName != ''">
+                info_name = #{infoName,jdbcType=VARCHAR},
+            </if>
+            <if test="infoSex != null">
+                info_sex = #{infoSex,jdbcType=INTEGER},
+            </if>
+            <if test="infoGraduationSchool != null and infoGraduationSchool != ''">
+                info_graduation_school = #{infoGraduationSchool,jdbcType=VARCHAR},
+            </if>
+            <if test="infoMajor != null and infoMajor != ''">
+                info_major = #{infoMajor,jdbcType=VARCHAR},
+            </if>
+            <if test="infoHighestEducation != null and infoHighestEducation != ''">
+                info_highest_education = #{infoHighestEducation,jdbcType=VARCHAR},
+            </if>
+            <if test="infoPhone != null and infoPhone != ''">
+                info_phone = #{infoPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="infoMailbox != null and infoMailbox != ''">
+                info_mailbox = #{infoMailbox,jdbcType=VARCHAR},
+            </if>
+            <if test="infoNativePlace != null and infoNativePlace != ''">
+                info_native_place = #{infoNativePlace,jdbcType=VARCHAR},
+            </if>
+            <if test="infoWorkPlace != null and infoWorkPlace != ''">
+                info_work_place = #{infoWorkPlace,jdbcType=VARCHAR},
+            </if>
+            <if test="infoIntendedPost != null and infoIntendedPost != ''">
+                info_intended_post = #{infoIntendedPost,jdbcType=VARCHAR},
+            </if>
+            <if test="infoCreateTime != null">
+                info_create_time = #{infoCreateTime,jdbcType=OTHER},
+            </if>
+            <if test="infoCreateName != null and infoCreateName != ''">
+                info_create_name = #{infoCreateName,jdbcType=VARCHAR},
+            </if>
+            <if test="infoInterviewTime != null">
+                info_interview_time = #{infoInterviewTime,jdbcType=OTHER},
+            </if>
+            <if test="infoPersonnelInterview != null and infoPersonnelInterview != ''">
+                info_personnel_interview = #{infoPersonnelInterview,jdbcType=VARCHAR},
+            </if>
+            <if test="infoPersonnelScore != null and infoPersonnelScore != ''">
+                info_personnel_score = #{infoPersonnelScore,jdbcType=VARCHAR},
+            </if>
+            <if test="infoPersonnelName != null and infoPersonnelName != ''">
+                info_personnel_name = #{infoPersonnelName,jdbcType=VARCHAR},
+            </if>
+            <if test="infoDeptment != null and infoDeptment != ''">
+                info_deptment = #{infoDeptment,jdbcType=VARCHAR},
+            </if>
+            <if test="infoPushDepartment != null and infoPushDepartment != ''">
+                info_push_department = #{infoPushDepartment,jdbcType=VARCHAR},
+            </if>
+            <if test="infoPushName != null and infoPushName != ''">
+                info_push_name = #{infoPushName,jdbcType=VARCHAR},
+            </if>
+            <if test="infoPushTime != null and infoPushTime != ''">
+                info_push_time = #{infoPushTime,jdbcType=VARCHAR},
+            </if>
+            <if test="infoResumePusher != null and infoResumePusher != ''">
+                info_resume_pusher = #{infoResumePusher,jdbcType=VARCHAR},
+            </if>
+            <if test="postSectionOffice != null and postSectionOffice != ''">
+                post_section_office = #{postSectionOffice,jdbcType=VARCHAR},
+            </if>
+            <if test="postActualPosition != null and postActualPosition != ''">
+                post_actual_position = #{postActualPosition,jdbcType=VARCHAR},
+            </if>
+            <if test="postDuty != null and postDuty != ''">
+                post_duty = #{postDuty,jdbcType=VARCHAR},
+            </if>
+            <if test="technicalInterview != null and technicalInterview != ''">
+                technical_interview = #{technicalInterview,jdbcType=VARCHAR},
+            </if>
+            <if test="technicalScore != null and technicalScore != ''">
+                technical_score = #{technicalScore,jdbcType=VARCHAR},
+            </if>
+            <if test="technicalName != null and technicalName != ''">
+                technical_name = #{technicalName,jdbcType=VARCHAR},
+            </if>
+            <if test="stuSchoolReport != null and stuSchoolReport != ''">
+                stu_school_report = #{stuSchoolReport,jdbcType=VARCHAR},
+            </if>
+            <if test="stuCet4 != null and stuCet4 != ''">
+                stu_cet4 = #{stuCet4,jdbcType=VARCHAR},
+            </if>
+            <if test="stuEducationReport != null and stuEducationReport != ''">
+                stu_education_report = #{stuEducationReport,jdbcType=VARCHAR},
+            </if>
+            <if test="stuOther != null and stuOther != ''">
+                stu_other = #{stuOther,jdbcType=VARCHAR},
+            </if>
+            <if test="auditLastTime != null">
+                audit_last_time = #{auditLastTime,jdbcType=OTHER},
+            </if>
+            <if test="auditName != null and auditName != ''">
+                audit_name = #{auditName,jdbcType=VARCHAR},
+            </if>
+            <if test="auditStatus != null and auditStatus != ''">
+                audit_status = #{auditStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="auditRemark != null and auditRemark != ''">
+                audit_remark = #{auditRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="signStatus != null and signStatus != ''">
+                sign_status = #{signStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="signEmploymentForm != null and signEmploymentForm != ''">
+                sign_employment_form = #{signEmploymentForm,jdbcType=VARCHAR},
+            </if>
+            <if test="signTime != null">
+                sign_time = #{signTime,jdbcType=OTHER},
+            </if>
+            <if test="signName != null and signName != ''">
+                sign_name = #{signName,jdbcType=VARCHAR},
+            </if>
+            <if test="salaryTime != null">
+                salary_time = #{salaryTime,jdbcType=OTHER},
+            </if>
+            <if test="salaryName != null and salaryName != ''">
+                salary_name = #{salaryName,jdbcType=VARCHAR},
+            </if>
+            <if test="offerTime != null">
+                offer_time = #{offerTime,jdbcType=OTHER},
+            </if>
+            <if test="offerSendName != null and offerSendName != ''">
+                offer_send_name = #{offerSendName,jdbcType=VARCHAR},
+            </if>
+            <if test="followSign != null and followSign != ''">
+                follow_sign = #{followSign,jdbcType=VARCHAR},
+            </if>
+            <if test="followSignTime != null">
+                follow_sign_time = #{followSignTime,jdbcType=OTHER},
+            </if>
+            <if test="followSignName != null and followSignName != ''">
+                follow_sign_name = #{followSignName,jdbcType=VARCHAR},
+            </if>
+            <if test="followMeans != null and followMeans != ''">
+                follow_means = #{followMeans,jdbcType=VARCHAR},
+            </if>
+            <if test="followMeansTime != null">
+                follow_means_time = #{followMeansTime,jdbcType=OTHER},
+            </if>
+            <if test="followMeansName != null and followMeansName != ''">
+                follow_means_name = #{followMeansName,jdbcType=VARCHAR},
+            </if>
+            <if test="defaultStatus != null">
+                default_status = #{defaultStatus,jdbcType=INTEGER},
+            </if>
+            <if test="defaultExplain != null and defaultExplain != ''">
+                default_explain = #{defaultExplain,jdbcType=VARCHAR},
+            </if>
+            <if test="defaultTime != null">
+                default_time = #{defaultTime,jdbcType=OTHER},
+            </if>
+            <if test="defaultName != null and defaultName != ''">
+                default_name = #{defaultName,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null and status != ''">
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="entend1 != null and entend1 != ''">
+                entend1 = #{entend1,jdbcType=VARCHAR},
+            </if>
+            <if test="entend2 != null and entend2 != ''">
+                entend2 = #{entend2,jdbcType=VARCHAR},
+            </if>
+            <if test="entend3 != null and entend3 != ''">
+                entend3 = #{entend3,jdbcType=VARCHAR},
+            </if>
+            <if test="entend4 != null and entend4 != ''">
+                entend4 = #{entend4,jdbcType=VARCHAR},
+            </if>
+            <if test="entend5 != null and entend5 != ''">
+                entend5 = #{entend5,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where  = #{,jdbcType=}
+    </update>
+
+    <!--通过表字段修改实体属性不为null的列-->
+    <update id="updateByField">
+        update fresh_students_info
+        <set>
+            <if test="where.id == null and set.id != null">
+                id = #{set.id,jdbcType=INTEGER},
+            </if>
+            <if test="where.infoRegistrationNo == null and set.infoRegistrationNo != null and set.infoRegistrationNo != ''">
+                info_registration_no = #{set.infoRegistrationNo,jdbcType=VARCHAR},
+            </if>
+            <if test="where.infoName == null and set.infoName != null and set.infoName != ''">
+                info_name = #{set.infoName,jdbcType=VARCHAR},
+            </if>
+            <if test="where.infoSex == null and set.infoSex != null">
+                info_sex = #{set.infoSex,jdbcType=INTEGER},
+            </if>
+            <if test="where.infoGraduationSchool == null and set.infoGraduationSchool != null and set.infoGraduationSchool != ''">
+                info_graduation_school = #{set.infoGraduationSchool,jdbcType=VARCHAR},
+            </if>
+            <if test="where.infoMajor == null and set.infoMajor != null and set.infoMajor != ''">
+                info_major = #{set.infoMajor,jdbcType=VARCHAR},
+            </if>
+            <if test="where.infoHighestEducation == null and set.infoHighestEducation != null and set.infoHighestEducation != ''">
+                info_highest_education = #{set.infoHighestEducation,jdbcType=VARCHAR},
+            </if>
+            <if test="where.infoPhone == null and set.infoPhone != null and set.infoPhone != ''">
+                info_phone = #{set.infoPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="where.infoMailbox == null and set.infoMailbox != null and set.infoMailbox != ''">
+                info_mailbox = #{set.infoMailbox,jdbcType=VARCHAR},
+            </if>
+            <if test="where.infoNativePlace == null and set.infoNativePlace != null and set.infoNativePlace != ''">
+                info_native_place = #{set.infoNativePlace,jdbcType=VARCHAR},
+            </if>
+            <if test="where.infoWorkPlace == null and set.infoWorkPlace != null and set.infoWorkPlace != ''">
+                info_work_place = #{set.infoWorkPlace,jdbcType=VARCHAR},
+            </if>
+            <if test="where.infoIntendedPost == null and set.infoIntendedPost != null and set.infoIntendedPost != ''">
+                info_intended_post = #{set.infoIntendedPost,jdbcType=VARCHAR},
+            </if>
+            <if test="where.infoCreateTime == null and set.infoCreateTime != null">
+                info_create_time = #{set.infoCreateTime,jdbcType=OTHER},
+            </if>
+            <if test="where.infoCreateName == null and set.infoCreateName != null and set.infoCreateName != ''">
+                info_create_name = #{set.infoCreateName,jdbcType=VARCHAR},
+            </if>
+            <if test="where.infoInterviewTime == null and set.infoInterviewTime != null">
+                info_interview_time = #{set.infoInterviewTime,jdbcType=OTHER},
+            </if>
+            <if test="where.infoPersonnelInterview == null and set.infoPersonnelInterview != null and set.infoPersonnelInterview != ''">
+                info_personnel_interview = #{set.infoPersonnelInterview,jdbcType=VARCHAR},
+            </if>
+            <if test="where.infoPersonnelScore == null and set.infoPersonnelScore != null and set.infoPersonnelScore != ''">
+                info_personnel_score = #{set.infoPersonnelScore,jdbcType=VARCHAR},
+            </if>
+            <if test="where.infoPersonnelName == null and set.infoPersonnelName != null and set.infoPersonnelName != ''">
+                info_personnel_name = #{set.infoPersonnelName,jdbcType=VARCHAR},
+            </if>
+            <if test="where.infoDeptment == null and set.infoDeptment != null and set.infoDeptment != ''">
+                info_deptment = #{set.infoDeptment,jdbcType=VARCHAR},
+            </if>
+            <if test="where.infoPushDepartment == null and set.infoPushDepartment != null and set.infoPushDepartment != ''">
+                info_push_department = #{set.infoPushDepartment,jdbcType=VARCHAR},
+            </if>
+            <if test="where.infoPushName == null and set.infoPushName != null and set.infoPushName != ''">
+                info_push_name = #{set.infoPushName,jdbcType=VARCHAR},
+            </if>
+            <if test="where.infoPushTime == null and set.infoPushTime != null and set.infoPushTime != ''">
+                info_push_time = #{set.infoPushTime,jdbcType=VARCHAR},
+            </if>
+            <if test="where.infoResumePusher == null and set.infoResumePusher != null and set.infoResumePusher != ''">
+                info_resume_pusher = #{set.infoResumePusher,jdbcType=VARCHAR},
+            </if>
+            <if test="where.postSectionOffice == null and set.postSectionOffice != null and set.postSectionOffice != ''">
+                post_section_office = #{set.postSectionOffice,jdbcType=VARCHAR},
+            </if>
+            <if test="where.postActualPosition == null and set.postActualPosition != null and set.postActualPosition != ''">
+                post_actual_position = #{set.postActualPosition,jdbcType=VARCHAR},
+            </if>
+            <if test="where.postDuty == null and set.postDuty != null and set.postDuty != ''">
+                post_duty = #{set.postDuty,jdbcType=VARCHAR},
+            </if>
+            <if test="where.technicalInterview == null and set.technicalInterview != null and set.technicalInterview != ''">
+                technical_interview = #{set.technicalInterview,jdbcType=VARCHAR},
+            </if>
+            <if test="where.technicalScore == null and set.technicalScore != null and set.technicalScore != ''">
+                technical_score = #{set.technicalScore,jdbcType=VARCHAR},
+            </if>
+            <if test="where.technicalName == null and set.technicalName != null and set.technicalName != ''">
+                technical_name = #{set.technicalName,jdbcType=VARCHAR},
+            </if>
+            <if test="where.stuSchoolReport == null and set.stuSchoolReport != null and set.stuSchoolReport != ''">
+                stu_school_report = #{set.stuSchoolReport,jdbcType=VARCHAR},
+            </if>
+            <if test="where.stuCet4 == null and set.stuCet4 != null and set.stuCet4 != ''">
+                stu_cet4 = #{set.stuCet4,jdbcType=VARCHAR},
+            </if>
+            <if test="where.stuEducationReport == null and set.stuEducationReport != null and set.stuEducationReport != ''">
+                stu_education_report = #{set.stuEducationReport,jdbcType=VARCHAR},
+            </if>
+            <if test="where.stuOther == null and set.stuOther != null and set.stuOther != ''">
+                stu_other = #{set.stuOther,jdbcType=VARCHAR},
+            </if>
+            <if test="where.auditLastTime == null and set.auditLastTime != null">
+                audit_last_time = #{set.auditLastTime,jdbcType=OTHER},
+            </if>
+            <if test="where.auditName == null and set.auditName != null and set.auditName != ''">
+                audit_name = #{set.auditName,jdbcType=VARCHAR},
+            </if>
+            <if test="where.auditStatus == null and set.auditStatus != null and set.auditStatus != ''">
+                audit_status = #{set.auditStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="where.auditRemark == null and set.auditRemark != null and set.auditRemark != ''">
+                audit_remark = #{set.auditRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="where.signStatus == null and set.signStatus != null and set.signStatus != ''">
+                sign_status = #{set.signStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="where.signEmploymentForm == null and set.signEmploymentForm != null and set.signEmploymentForm != ''">
+                sign_employment_form = #{set.signEmploymentForm,jdbcType=VARCHAR},
+            </if>
+            <if test="where.signTime == null and set.signTime != null">
+                sign_time = #{set.signTime,jdbcType=OTHER},
+            </if>
+            <if test="where.signName == null and set.signName != null and set.signName != ''">
+                sign_name = #{set.signName,jdbcType=VARCHAR},
+            </if>
+            <if test="where.salaryTime == null and set.salaryTime != null">
+                salary_time = #{set.salaryTime,jdbcType=OTHER},
+            </if>
+            <if test="where.salaryName == null and set.salaryName != null and set.salaryName != ''">
+                salary_name = #{set.salaryName,jdbcType=VARCHAR},
+            </if>
+            <if test="where.offerTime == null and set.offerTime != null">
+                offer_time = #{set.offerTime,jdbcType=OTHER},
+            </if>
+            <if test="where.offerSendName == null and set.offerSendName != null and set.offerSendName != ''">
+                offer_send_name = #{set.offerSendName,jdbcType=VARCHAR},
+            </if>
+            <if test="where.followSign == null and set.followSign != null and set.followSign != ''">
+                follow_sign = #{set.followSign,jdbcType=VARCHAR},
+            </if>
+            <if test="where.followSignTime == null and set.followSignTime != null">
+                follow_sign_time = #{set.followSignTime,jdbcType=OTHER},
+            </if>
+            <if test="where.followSignName == null and set.followSignName != null and set.followSignName != ''">
+                follow_sign_name = #{set.followSignName,jdbcType=VARCHAR},
+            </if>
+            <if test="where.followMeans == null and set.followMeans != null and set.followMeans != ''">
+                follow_means = #{set.followMeans,jdbcType=VARCHAR},
+            </if>
+            <if test="where.followMeansTime == null and set.followMeansTime != null">
+                follow_means_time = #{set.followMeansTime,jdbcType=OTHER},
+            </if>
+            <if test="where.followMeansName == null and set.followMeansName != null and set.followMeansName != ''">
+                follow_means_name = #{set.followMeansName,jdbcType=VARCHAR},
+            </if>
+            <if test="where.defaultStatus == null and set.defaultStatus != null">
+                default_status = #{set.defaultStatus,jdbcType=INTEGER},
+            </if>
+            <if test="where.defaultExplain == null and set.defaultExplain != null and set.defaultExplain != ''">
+                default_explain = #{set.defaultExplain,jdbcType=VARCHAR},
+            </if>
+            <if test="where.defaultTime == null and set.defaultTime != null">
+                default_time = #{set.defaultTime,jdbcType=OTHER},
+            </if>
+            <if test="where.defaultName == null and set.defaultName != null and set.defaultName != ''">
+                default_name = #{set.defaultName,jdbcType=VARCHAR},
+            </if>
+            <if test="where.status == null and set.status != null and set.status != ''">
+                status = #{set.status,jdbcType=VARCHAR},
+            </if>
+            <if test="where.entend1 == null and set.entend1 != null and set.entend1 != ''">
+                entend1 = #{set.entend1,jdbcType=VARCHAR},
+            </if>
+            <if test="where.entend2 == null and set.entend2 != null and set.entend2 != ''">
+                entend2 = #{set.entend2,jdbcType=VARCHAR},
+            </if>
+            <if test="where.entend3 == null and set.entend3 != null and set.entend3 != ''">
+                entend3 = #{set.entend3,jdbcType=VARCHAR},
+            </if>
+            <if test="where.entend4 == null and set.entend4 != null and set.entend4 != ''">
+                entend4 = #{set.entend4,jdbcType=VARCHAR},
+            </if>
+            <if test="where.entend5 == null and set.entend5 != null and set.entend5 != ''">
+                entend5 = #{set.entend5,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <where>
+            <if test="where.id != null">
+                and id = #{where.id,jdbcType=INTEGER}
+            </if>
+            <if test="where.infoRegistrationNo != null">
+                and info_registration_no = #{where.infoRegistrationNo,jdbcType=VARCHAR}
+            </if>
+            <if test="where.infoName != null">
+                and info_name = #{where.infoName,jdbcType=VARCHAR}
+            </if>
+            <if test="where.infoSex != null">
+                and info_sex = #{where.infoSex,jdbcType=INTEGER}
+            </if>
+            <if test="where.infoGraduationSchool != null">
+                and info_graduation_school = #{where.infoGraduationSchool,jdbcType=VARCHAR}
+            </if>
+            <if test="where.infoMajor != null">
+                and info_major = #{where.infoMajor,jdbcType=VARCHAR}
+            </if>
+            <if test="where.infoHighestEducation != null">
+                and info_highest_education = #{where.infoHighestEducation,jdbcType=VARCHAR}
+            </if>
+            <if test="where.infoPhone != null">
+                and info_phone = #{where.infoPhone,jdbcType=VARCHAR}
+            </if>
+            <if test="where.infoMailbox != null">
+                and info_mailbox = #{where.infoMailbox,jdbcType=VARCHAR}
+            </if>
+            <if test="where.infoNativePlace != null">
+                and info_native_place = #{where.infoNativePlace,jdbcType=VARCHAR}
+            </if>
+            <if test="where.infoWorkPlace != null">
+                and info_work_place = #{where.infoWorkPlace,jdbcType=VARCHAR}
+            </if>
+            <if test="where.infoIntendedPost != null">
+                and info_intended_post = #{where.infoIntendedPost,jdbcType=VARCHAR}
+            </if>
+            <if test="where.infoCreateTime != null">
+                and info_create_time = #{where.infoCreateTime,jdbcType=OTHER}
+            </if>
+            <if test="where.infoCreateName != null">
+                and info_create_name = #{where.infoCreateName,jdbcType=VARCHAR}
+            </if>
+            <if test="where.infoInterviewTime != null">
+                and info_interview_time = #{where.infoInterviewTime,jdbcType=OTHER}
+            </if>
+            <if test="where.infoPersonnelInterview != null">
+                and info_personnel_interview = #{where.infoPersonnelInterview,jdbcType=VARCHAR}
+            </if>
+            <if test="where.infoPersonnelScore != null">
+                and info_personnel_score = #{where.infoPersonnelScore,jdbcType=VARCHAR}
+            </if>
+            <if test="where.infoPersonnelName != null">
+                and info_personnel_name = #{where.infoPersonnelName,jdbcType=VARCHAR}
+            </if>
+            <if test="where.infoDeptment != null">
+                and info_deptment = #{where.infoDeptment,jdbcType=VARCHAR}
+            </if>
+            <if test="where.infoPushDepartment != null">
+                and info_push_department = #{where.infoPushDepartment,jdbcType=VARCHAR}
+            </if>
+            <if test="where.infoPushName != null">
+                and info_push_name = #{where.infoPushName,jdbcType=VARCHAR}
+            </if>
+            <if test="where.infoPushTime != null">
+                and info_push_time = #{where.infoPushTime,jdbcType=VARCHAR}
+            </if>
+            <if test="where.infoResumePusher != null">
+                and info_resume_pusher = #{where.infoResumePusher,jdbcType=VARCHAR}
+            </if>
+            <if test="where.postSectionOffice != null">
+                and post_section_office = #{where.postSectionOffice,jdbcType=VARCHAR}
+            </if>
+            <if test="where.postActualPosition != null">
+                and post_actual_position = #{where.postActualPosition,jdbcType=VARCHAR}
+            </if>
+            <if test="where.postDuty != null">
+                and post_duty = #{where.postDuty,jdbcType=VARCHAR}
+            </if>
+            <if test="where.technicalInterview != null">
+                and technical_interview = #{where.technicalInterview,jdbcType=VARCHAR}
+            </if>
+            <if test="where.technicalScore != null">
+                and technical_score = #{where.technicalScore,jdbcType=VARCHAR}
+            </if>
+            <if test="where.technicalName != null">
+                and technical_name = #{where.technicalName,jdbcType=VARCHAR}
+            </if>
+            <if test="where.stuSchoolReport != null">
+                and stu_school_report = #{where.stuSchoolReport,jdbcType=VARCHAR}
+            </if>
+            <if test="where.stuCet4 != null">
+                and stu_cet4 = #{where.stuCet4,jdbcType=VARCHAR}
+            </if>
+            <if test="where.stuEducationReport != null">
+                and stu_education_report = #{where.stuEducationReport,jdbcType=VARCHAR}
+            </if>
+            <if test="where.stuOther != null">
+                and stu_other = #{where.stuOther,jdbcType=VARCHAR}
+            </if>
+            <if test="where.auditLastTime != null">
+                and audit_last_time = #{where.auditLastTime,jdbcType=OTHER}
+            </if>
+            <if test="where.auditName != null">
+                and audit_name = #{where.auditName,jdbcType=VARCHAR}
+            </if>
+            <if test="where.auditStatus != null">
+                and audit_status = #{where.auditStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="where.auditRemark != null">
+                and audit_remark = #{where.auditRemark,jdbcType=VARCHAR}
+            </if>
+            <if test="where.signStatus != null">
+                and sign_status = #{where.signStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="where.signEmploymentForm != null">
+                and sign_employment_form = #{where.signEmploymentForm,jdbcType=VARCHAR}
+            </if>
+            <if test="where.signTime != null">
+                and sign_time = #{where.signTime,jdbcType=OTHER}
+            </if>
+            <if test="where.signName != null">
+                and sign_name = #{where.signName,jdbcType=VARCHAR}
+            </if>
+            <if test="where.salaryTime != null">
+                and salary_time = #{where.salaryTime,jdbcType=OTHER}
+            </if>
+            <if test="where.salaryName != null">
+                and salary_name = #{where.salaryName,jdbcType=VARCHAR}
+            </if>
+            <if test="where.offerTime != null">
+                and offer_time = #{where.offerTime,jdbcType=OTHER}
+            </if>
+            <if test="where.offerSendName != null">
+                and offer_send_name = #{where.offerSendName,jdbcType=VARCHAR}
+            </if>
+            <if test="where.followSign != null">
+                and follow_sign = #{where.followSign,jdbcType=VARCHAR}
+            </if>
+            <if test="where.followSignTime != null">
+                and follow_sign_time = #{where.followSignTime,jdbcType=OTHER}
+            </if>
+            <if test="where.followSignName != null">
+                and follow_sign_name = #{where.followSignName,jdbcType=VARCHAR}
+            </if>
+            <if test="where.followMeans != null">
+                and follow_means = #{where.followMeans,jdbcType=VARCHAR}
+            </if>
+            <if test="where.followMeansTime != null">
+                and follow_means_time = #{where.followMeansTime,jdbcType=OTHER}
+            </if>
+            <if test="where.followMeansName != null">
+                and follow_means_name = #{where.followMeansName,jdbcType=VARCHAR}
+            </if>
+            <if test="where.defaultStatus != null">
+                and default_status = #{where.defaultStatus,jdbcType=INTEGER}
+            </if>
+            <if test="where.defaultExplain != null">
+                and default_explain = #{where.defaultExplain,jdbcType=VARCHAR}
+            </if>
+            <if test="where.defaultTime != null">
+                and default_time = #{where.defaultTime,jdbcType=OTHER}
+            </if>
+            <if test="where.defaultName != null">
+                and default_name = #{where.defaultName,jdbcType=VARCHAR}
+            </if>
+            <if test="where.status != null">
+                and status = #{where.status,jdbcType=VARCHAR}
+            </if>
+            <if test="where.entend1 != null">
+                and entend1 = #{where.entend1,jdbcType=VARCHAR}
+            </if>
+            <if test="where.entend2 != null">
+                and entend2 = #{where.entend2,jdbcType=VARCHAR}
+            </if>
+            <if test="where.entend3 != null">
+                and entend3 = #{where.entend3,jdbcType=VARCHAR}
+            </if>
+            <if test="where.entend4 != null">
+                and entend4 = #{where.entend4,jdbcType=VARCHAR}
+            </if>
+            <if test="where.entend5 != null">
+                and entend5 = #{where.entend5,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </update>
+
+    <!--通过主键修改实体列表，列表长度不能为0，注意：当实体属性为null时，对应的列也会别更新为null-->
+    <update id="updateBatch" parameterType="list">
+        update fresh_students_info
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="id = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.id}
+                 </foreach>
+            </trim>
+            <trim prefix="info_registration_no = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.infoRegistrationNo}
+                 </foreach>
+            </trim>
+            <trim prefix="info_name = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.infoName}
+                 </foreach>
+            </trim>
+            <trim prefix="info_sex = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.infoSex}
+                 </foreach>
+            </trim>
+            <trim prefix="info_graduation_school = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.infoGraduationSchool}
+                 </foreach>
+            </trim>
+            <trim prefix="info_major = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.infoMajor}
+                 </foreach>
+            </trim>
+            <trim prefix="info_highest_education = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.infoHighestEducation}
+                 </foreach>
+            </trim>
+            <trim prefix="info_phone = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.infoPhone}
+                 </foreach>
+            </trim>
+            <trim prefix="info_mailbox = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.infoMailbox}
+                 </foreach>
+            </trim>
+            <trim prefix="info_native_place = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.infoNativePlace}
+                 </foreach>
+            </trim>
+            <trim prefix="info_work_place = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.infoWorkPlace}
+                 </foreach>
+            </trim>
+            <trim prefix="info_intended_post = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.infoIntendedPost}
+                 </foreach>
+            </trim>
+            <trim prefix="info_create_time = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.infoCreateTime}
+                 </foreach>
+            </trim>
+            <trim prefix="info_create_name = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.infoCreateName}
+                 </foreach>
+            </trim>
+            <trim prefix="info_interview_time = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.infoInterviewTime}
+                 </foreach>
+            </trim>
+            <trim prefix="info_personnel_interview = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.infoPersonnelInterview}
+                 </foreach>
+            </trim>
+            <trim prefix="info_personnel_score = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.infoPersonnelScore}
+                 </foreach>
+            </trim>
+            <trim prefix="info_personnel_name = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.infoPersonnelName}
+                 </foreach>
+            </trim>
+            <trim prefix="info_deptment = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.infoDeptment}
+                 </foreach>
+            </trim>
+            <trim prefix="info_push_department = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.infoPushDepartment}
+                 </foreach>
+            </trim>
+            <trim prefix="info_push_name = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.infoPushName}
+                 </foreach>
+            </trim>
+            <trim prefix="info_push_time = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.infoPushTime}
+                 </foreach>
+            </trim>
+            <trim prefix="info_resume_pusher = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.infoResumePusher}
+                 </foreach>
+            </trim>
+            <trim prefix="post_section_office = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.postSectionOffice}
+                 </foreach>
+            </trim>
+            <trim prefix="post_actual_position = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.postActualPosition}
+                 </foreach>
+            </trim>
+            <trim prefix="post_duty = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.postDuty}
+                 </foreach>
+            </trim>
+            <trim prefix="technical_interview = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.technicalInterview}
+                 </foreach>
+            </trim>
+            <trim prefix="technical_score = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.technicalScore}
+                 </foreach>
+            </trim>
+            <trim prefix="technical_name = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.technicalName}
+                 </foreach>
+            </trim>
+            <trim prefix="stu_school_report = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.stuSchoolReport}
+                 </foreach>
+            </trim>
+            <trim prefix="stu_cet4 = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.stuCet4}
+                 </foreach>
+            </trim>
+            <trim prefix="stu_education_report = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.stuEducationReport}
+                 </foreach>
+            </trim>
+            <trim prefix="stu_other = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.stuOther}
+                 </foreach>
+            </trim>
+            <trim prefix="audit_last_time = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.auditLastTime}
+                 </foreach>
+            </trim>
+            <trim prefix="audit_name = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.auditName}
+                 </foreach>
+            </trim>
+            <trim prefix="audit_status = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.auditStatus}
+                 </foreach>
+            </trim>
+            <trim prefix="audit_remark = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.auditRemark}
+                 </foreach>
+            </trim>
+            <trim prefix="sign_status = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.signStatus}
+                 </foreach>
+            </trim>
+            <trim prefix="sign_employment_form = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.signEmploymentForm}
+                 </foreach>
+            </trim>
+            <trim prefix="sign_time = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.signTime}
+                 </foreach>
+            </trim>
+            <trim prefix="sign_name = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.signName}
+                 </foreach>
+            </trim>
+            <trim prefix="salary_time = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.salaryTime}
+                 </foreach>
+            </trim>
+            <trim prefix="salary_name = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.salaryName}
+                 </foreach>
+            </trim>
+            <trim prefix="offer_time = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.offerTime}
+                 </foreach>
+            </trim>
+            <trim prefix="offer_send_name = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.offerSendName}
+                 </foreach>
+            </trim>
+            <trim prefix="follow_sign = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.followSign}
+                 </foreach>
+            </trim>
+            <trim prefix="follow_sign_time = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.followSignTime}
+                 </foreach>
+            </trim>
+            <trim prefix="follow_sign_name = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.followSignName}
+                 </foreach>
+            </trim>
+            <trim prefix="follow_means = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.followMeans}
+                 </foreach>
+            </trim>
+            <trim prefix="follow_means_time = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.followMeansTime}
+                 </foreach>
+            </trim>
+            <trim prefix="follow_means_name = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.followMeansName}
+                 </foreach>
+            </trim>
+            <trim prefix="default_status = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when id = #{item.id} then #{item.defaultStatus}
+                 </foreach>
+            </trim>
+            <trim prefix="default_explain = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.defaultExplain}
+                 </foreach>
+            </trim>
+            <trim prefix="default_time = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.defaultTime}
+                 </foreach>
+            </trim>
+            <trim prefix="default_name = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.defaultName}
+                 </foreach>
+            </trim>
+            <trim prefix="status = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.status}
+                 </foreach>
+            </trim>
+            <trim prefix="entend1 = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.entend1}
+                 </foreach>
+            </trim>
+            <trim prefix="entend2 = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.entend2}
+                 </foreach>
+            </trim>
+            <trim prefix="entend3 = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.entend3}
+                 </foreach>
+            </trim>
+            <trim prefix="entend4 = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.entend4}
+                 </foreach>
+            </trim>
+            <trim prefix="entend5 = case" suffix="end,">
+                 <foreach collection="list" item="item" index="index">
+                  when  id = #{item.id} then #{item.entend5}
+                 </foreach>
+            </trim>
+        </trim>
+        where  in
+        <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    
+    <!--通过主键删除-->
+    <delete id="deleteById" parameterType="java.lang.Long">
+        delete from fresh_students_info where id = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--通过实体非空属性删除-->
+    <delete id="deleteByEntity" parameterType="com.byd.personnel.common.entity.FreshStudentsInfoEntity">
+        delete from fresh_students_info
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="infoRegistrationNo != null">
+                and info_registration_no = #{infoRegistrationNo,jdbcType=VARCHAR}
+            </if>
+            <if test="infoName != null">
+                and info_name = #{infoName,jdbcType=VARCHAR}
+            </if>
+            <if test="infoSex != null">
+                and info_sex = #{infoSex,jdbcType=INTEGER}
+            </if>
+            <if test="infoGraduationSchool != null">
+                and info_graduation_school = #{infoGraduationSchool,jdbcType=VARCHAR}
+            </if>
+            <if test="infoMajor != null">
+                and info_major = #{infoMajor,jdbcType=VARCHAR}
+            </if>
+            <if test="infoHighestEducation != null">
+                and info_highest_education = #{infoHighestEducation,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPhone != null">
+                and info_phone = #{infoPhone,jdbcType=VARCHAR}
+            </if>
+            <if test="infoMailbox != null">
+                and info_mailbox = #{infoMailbox,jdbcType=VARCHAR}
+            </if>
+            <if test="infoNativePlace != null">
+                and info_native_place = #{infoNativePlace,jdbcType=VARCHAR}
+            </if>
+            <if test="infoWorkPlace != null">
+                and info_work_place = #{infoWorkPlace,jdbcType=VARCHAR}
+            </if>
+            <if test="infoIntendedPost != null">
+                and info_intended_post = #{infoIntendedPost,jdbcType=VARCHAR}
+            </if>
+            <if test="infoCreateTime != null">
+                and info_create_time = #{infoCreateTime,jdbcType=OTHER}
+            </if>
+            <if test="infoCreateName != null">
+                and info_create_name = #{infoCreateName,jdbcType=VARCHAR}
+            </if>
+            <if test="infoInterviewTime != null">
+                and info_interview_time = #{infoInterviewTime,jdbcType=OTHER}
+            </if>
+            <if test="infoPersonnelInterview != null">
+                and info_personnel_interview = #{infoPersonnelInterview,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPersonnelScore != null">
+                and info_personnel_score = #{infoPersonnelScore,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPersonnelName != null">
+                and info_personnel_name = #{infoPersonnelName,jdbcType=VARCHAR}
+            </if>
+            <if test="infoDeptment != null">
+                and info_deptment = #{infoDeptment,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPushDepartment != null">
+                and info_push_department = #{infoPushDepartment,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPushName != null">
+                and info_push_name = #{infoPushName,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPushTime != null">
+                and info_push_time = #{infoPushTime,jdbcType=VARCHAR}
+            </if>
+            <if test="infoResumePusher != null">
+                and info_resume_pusher = #{infoResumePusher,jdbcType=VARCHAR}
+            </if>
+            <if test="postSectionOffice != null">
+                and post_section_office = #{postSectionOffice,jdbcType=VARCHAR}
+            </if>
+            <if test="postActualPosition != null">
+                and post_actual_position = #{postActualPosition,jdbcType=VARCHAR}
+            </if>
+            <if test="postDuty != null">
+                and post_duty = #{postDuty,jdbcType=VARCHAR}
+            </if>
+            <if test="technicalInterview != null">
+                and technical_interview = #{technicalInterview,jdbcType=VARCHAR}
+            </if>
+            <if test="technicalScore != null">
+                and technical_score = #{technicalScore,jdbcType=VARCHAR}
+            </if>
+            <if test="technicalName != null">
+                and technical_name = #{technicalName,jdbcType=VARCHAR}
+            </if>
+            <if test="stuSchoolReport != null">
+                and stu_school_report = #{stuSchoolReport,jdbcType=VARCHAR}
+            </if>
+            <if test="stuCet4 != null">
+                and stu_cet4 = #{stuCet4,jdbcType=VARCHAR}
+            </if>
+            <if test="stuEducationReport != null">
+                and stu_education_report = #{stuEducationReport,jdbcType=VARCHAR}
+            </if>
+            <if test="stuOther != null">
+                and stu_other = #{stuOther,jdbcType=VARCHAR}
+            </if>
+            <if test="auditLastTime != null">
+                and audit_last_time = #{auditLastTime,jdbcType=OTHER}
+            </if>
+            <if test="auditName != null">
+                and audit_name = #{auditName,jdbcType=VARCHAR}
+            </if>
+            <if test="auditStatus != null">
+                and audit_status = #{auditStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="auditRemark != null">
+                and audit_remark = #{auditRemark,jdbcType=VARCHAR}
+            </if>
+            <if test="signStatus != null">
+                and sign_status = #{signStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="signEmploymentForm != null">
+                and sign_employment_form = #{signEmploymentForm,jdbcType=VARCHAR}
+            </if>
+            <if test="signTime != null">
+                and sign_time = #{signTime,jdbcType=OTHER}
+            </if>
+            <if test="signName != null">
+                and sign_name = #{signName,jdbcType=VARCHAR}
+            </if>
+            <if test="salaryTime != null">
+                and salary_time = #{salaryTime,jdbcType=OTHER}
+            </if>
+            <if test="salaryName != null">
+                and salary_name = #{salaryName,jdbcType=VARCHAR}
+            </if>
+            <if test="offerTime != null">
+                and offer_time = #{offerTime,jdbcType=OTHER}
+            </if>
+            <if test="offerSendName != null">
+                and offer_send_name = #{offerSendName,jdbcType=VARCHAR}
+            </if>
+            <if test="followSign != null">
+                and follow_sign = #{followSign,jdbcType=VARCHAR}
+            </if>
+            <if test="followSignTime != null">
+                and follow_sign_time = #{followSignTime,jdbcType=OTHER}
+            </if>
+            <if test="followSignName != null">
+                and follow_sign_name = #{followSignName,jdbcType=VARCHAR}
+            </if>
+            <if test="followMeans != null">
+                and follow_means = #{followMeans,jdbcType=VARCHAR}
+            </if>
+            <if test="followMeansTime != null">
+                and follow_means_time = #{followMeansTime,jdbcType=OTHER}
+            </if>
+            <if test="followMeansName != null">
+                and follow_means_name = #{followMeansName,jdbcType=VARCHAR}
+            </if>
+            <if test="defaultStatus != null">
+                and default_status = #{defaultStatus,jdbcType=INTEGER}
+            </if>
+            <if test="defaultExplain != null">
+                and default_explain = #{defaultExplain,jdbcType=VARCHAR}
+            </if>
+            <if test="defaultTime != null">
+                and default_time = #{defaultTime,jdbcType=OTHER}
+            </if>
+            <if test="defaultName != null">
+                and default_name = #{defaultName,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null">
+                and status = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="entend1 != null">
+                and entend1 = #{entend1,jdbcType=VARCHAR}
+            </if>
+            <if test="entend2 != null">
+                and entend2 = #{entend2,jdbcType=VARCHAR}
+            </if>
+            <if test="entend3 != null">
+                and entend3 = #{entend3,jdbcType=VARCHAR}
+            </if>
+            <if test="entend4 != null">
+                and entend4 = #{entend4,jdbcType=VARCHAR}
+            </if>
+            <if test="entend5 != null">
+                and entend5 = #{entend5,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </delete>
+    
+    <!--通过主键列表删除，列表长度不能为0-->
+    <delete id="deleteByIds" parameterType="list">
+        delete from fresh_students_info where  in
+        <foreach item="item" collection="list" separator="," open="(" close=")" index="index">
+            #{item}
+        </foreach>
+    </delete>
+    
+    <select id="countAll" resultType="int">
+        select count(*) from fresh_students_info
+    </select>
+    
+    <select id="countByEntity" parameterType="com.byd.personnel.common.entity.FreshStudentsInfoEntity" resultType="int">
+        select count(*) from fresh_students_info
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="infoRegistrationNo != null">
+                and info_registration_no = #{infoRegistrationNo,jdbcType=VARCHAR}
+            </if>
+            <if test="infoName != null">
+                and info_name = #{infoName,jdbcType=VARCHAR}
+            </if>
+            <if test="infoSex != null">
+                and info_sex = #{infoSex,jdbcType=INTEGER}
+            </if>
+            <if test="infoGraduationSchool != null">
+                and info_graduation_school = #{infoGraduationSchool,jdbcType=VARCHAR}
+            </if>
+            <if test="infoMajor != null">
+                and info_major = #{infoMajor,jdbcType=VARCHAR}
+            </if>
+            <if test="infoHighestEducation != null">
+                and info_highest_education = #{infoHighestEducation,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPhone != null">
+                and info_phone = #{infoPhone,jdbcType=VARCHAR}
+            </if>
+            <if test="infoMailbox != null">
+                and info_mailbox = #{infoMailbox,jdbcType=VARCHAR}
+            </if>
+            <if test="infoNativePlace != null">
+                and info_native_place = #{infoNativePlace,jdbcType=VARCHAR}
+            </if>
+            <if test="infoWorkPlace != null">
+                and info_work_place = #{infoWorkPlace,jdbcType=VARCHAR}
+            </if>
+            <if test="infoIntendedPost != null">
+                and info_intended_post = #{infoIntendedPost,jdbcType=VARCHAR}
+            </if>
+            <if test="infoCreateTime != null">
+                and info_create_time = #{infoCreateTime,jdbcType=OTHER}
+            </if>
+            <if test="infoCreateName != null">
+                and info_create_name = #{infoCreateName,jdbcType=VARCHAR}
+            </if>
+            <if test="infoInterviewTime != null">
+                and info_interview_time = #{infoInterviewTime,jdbcType=OTHER}
+            </if>
+            <if test="infoPersonnelInterview != null">
+                and info_personnel_interview = #{infoPersonnelInterview,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPersonnelScore != null">
+                and info_personnel_score = #{infoPersonnelScore,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPersonnelName != null">
+                and info_personnel_name = #{infoPersonnelName,jdbcType=VARCHAR}
+            </if>
+            <if test="infoDeptment != null">
+                and info_deptment = #{infoDeptment,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPushDepartment != null">
+                and info_push_department = #{infoPushDepartment,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPushName != null">
+                and info_push_name = #{infoPushName,jdbcType=VARCHAR}
+            </if>
+            <if test="infoPushTime != null">
+                and info_push_time = #{infoPushTime,jdbcType=VARCHAR}
+            </if>
+            <if test="infoResumePusher != null">
+                and info_resume_pusher = #{infoResumePusher,jdbcType=VARCHAR}
+            </if>
+            <if test="postSectionOffice != null">
+                and post_section_office = #{postSectionOffice,jdbcType=VARCHAR}
+            </if>
+            <if test="postActualPosition != null">
+                and post_actual_position = #{postActualPosition,jdbcType=VARCHAR}
+            </if>
+            <if test="postDuty != null">
+                and post_duty = #{postDuty,jdbcType=VARCHAR}
+            </if>
+            <if test="technicalInterview != null">
+                and technical_interview = #{technicalInterview,jdbcType=VARCHAR}
+            </if>
+            <if test="technicalScore != null">
+                and technical_score = #{technicalScore,jdbcType=VARCHAR}
+            </if>
+            <if test="technicalName != null">
+                and technical_name = #{technicalName,jdbcType=VARCHAR}
+            </if>
+            <if test="stuSchoolReport != null">
+                and stu_school_report = #{stuSchoolReport,jdbcType=VARCHAR}
+            </if>
+            <if test="stuCet4 != null">
+                and stu_cet4 = #{stuCet4,jdbcType=VARCHAR}
+            </if>
+            <if test="stuEducationReport != null">
+                and stu_education_report = #{stuEducationReport,jdbcType=VARCHAR}
+            </if>
+            <if test="stuOther != null">
+                and stu_other = #{stuOther,jdbcType=VARCHAR}
+            </if>
+            <if test="auditLastTime != null">
+                and audit_last_time = #{auditLastTime,jdbcType=OTHER}
+            </if>
+            <if test="auditName != null">
+                and audit_name = #{auditName,jdbcType=VARCHAR}
+            </if>
+            <if test="auditStatus != null">
+                and audit_status = #{auditStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="auditRemark != null">
+                and audit_remark = #{auditRemark,jdbcType=VARCHAR}
+            </if>
+            <if test="signStatus != null">
+                and sign_status = #{signStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="signEmploymentForm != null">
+                and sign_employment_form = #{signEmploymentForm,jdbcType=VARCHAR}
+            </if>
+            <if test="signTime != null">
+                and sign_time = #{signTime,jdbcType=OTHER}
+            </if>
+            <if test="signName != null">
+                and sign_name = #{signName,jdbcType=VARCHAR}
+            </if>
+            <if test="salaryTime != null">
+                and salary_time = #{salaryTime,jdbcType=OTHER}
+            </if>
+            <if test="salaryName != null">
+                and salary_name = #{salaryName,jdbcType=VARCHAR}
+            </if>
+            <if test="offerTime != null">
+                and offer_time = #{offerTime,jdbcType=OTHER}
+            </if>
+            <if test="offerSendName != null">
+                and offer_send_name = #{offerSendName,jdbcType=VARCHAR}
+            </if>
+            <if test="followSign != null">
+                and follow_sign = #{followSign,jdbcType=VARCHAR}
+            </if>
+            <if test="followSignTime != null">
+                and follow_sign_time = #{followSignTime,jdbcType=OTHER}
+            </if>
+            <if test="followSignName != null">
+                and follow_sign_name = #{followSignName,jdbcType=VARCHAR}
+            </if>
+            <if test="followMeans != null">
+                and follow_means = #{followMeans,jdbcType=VARCHAR}
+            </if>
+            <if test="followMeansTime != null">
+                and follow_means_time = #{followMeansTime,jdbcType=OTHER}
+            </if>
+            <if test="followMeansName != null">
+                and follow_means_name = #{followMeansName,jdbcType=VARCHAR}
+            </if>
+            <if test="defaultStatus != null">
+                and default_status = #{defaultStatus,jdbcType=INTEGER}
+            </if>
+            <if test="defaultExplain != null">
+                and default_explain = #{defaultExplain,jdbcType=VARCHAR}
+            </if>
+            <if test="defaultTime != null">
+                and default_time = #{defaultTime,jdbcType=OTHER}
+            </if>
+            <if test="defaultName != null">
+                and default_name = #{defaultName,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null">
+                and status = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="entend1 != null">
+                and entend1 = #{entend1,jdbcType=VARCHAR}
+            </if>
+            <if test="entend2 != null">
+                and entend2 = #{entend2,jdbcType=VARCHAR}
+            </if>
+            <if test="entend3 != null">
+                and entend3 = #{entend3,jdbcType=VARCHAR}
+            </if>
+            <if test="entend4 != null">
+                and entend4 = #{entend4,jdbcType=VARCHAR}
+            </if>
+            <if test="entend5 != null">
+                and entend5 = #{entend5,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+</mapper>
