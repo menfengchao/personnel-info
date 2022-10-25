@@ -15,7 +15,8 @@ import java.util.List;
  * @since 2022-10-25 15:10:10
  */
 
-@RestController("/freshStudentsInfo")
+@RestController
+@RequestMapping("freshStudentsInfo")
 public class FreshStudentsInfoController {
 
    @Autowired

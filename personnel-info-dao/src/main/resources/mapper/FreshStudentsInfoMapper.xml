@@ -69,20 +69,21 @@
     <sql id="table_field">
       id, info_registration_no, info_name, info_sex, info_graduation_school, info_major, info_highest_education, info_phone, info_mailbox, info_native_place, info_work_place, info_intended_post, info_create_time, info_create_name, info_interview_time, info_personnel_interview, info_personnel_score, info_personnel_name, info_deptment, info_push_department, info_push_name, info_push_time, info_resume_pusher, post_section_office, post_actual_position, post_duty, technical_interview, technical_score, technical_name, stu_school_report, stu_cet4, stu_education_report, stu_other, audit_last_time, audit_name, audit_status, audit_remark, sign_status, sign_employment_form, sign_time, sign_name, salary_time, salary_name, offer_time, offer_send_name, follow_sign, follow_sign_time, follow_sign_name, follow_means, follow_means_time, follow_means_name, default_status, default_explain, default_time, default_name, status, entend1, entend2, entend3, entend4, entend5      
     </sql>
-       
+
     <!--通过Id查询单个-->
     <select id="getById" resultMap="FreshStudentsInfoResultMap" parameterType="java.lang.Long">
         select
-          <include refid="table_field" />
+        <include refid="table_field"/>
         from fresh_students_info
-        where  id= #{id,jdbcType=BIGINT}
+        where id = #{id,jdbcType=BIGINT}
     </select>
 
 
     <!--通过实体不为空的属性作为筛选条件查询列表-->
-    <select id="listByEntity" resultMap="FreshStudentsInfoResultMap" parameterType="com.byd.personnel.common.entity.FreshStudentsInfoEntity">
+    <select id="listByEntity" resultMap="FreshStudentsInfoResultMap"
+            parameterType="com.byd.personnel.common.entity.FreshStudentsInfoEntity">
         select
-          <include refid="table_field" />
+        <include refid="table_field"/>
         from fresh_students_info
         <where>
             <if test="id != null">
@@ -272,9 +273,10 @@
     </select>
 
     <!--通过实体不为空的属性作为筛选条件查询单个-->
-    <select id="getByEntity" resultMap="FreshStudentsInfoResultMap" parameterType="com.byd.personnel.common.entity.FreshStudentsInfoEntity">
+    <select id="getByEntity" resultMap="FreshStudentsInfoResultMap"
+            parameterType="com.byd.personnel.common.entity.FreshStudentsInfoEntity">
         select
-          <include refid="table_field" />
+        <include refid="table_field"/>
         from fresh_students_info
         <where>
             <if test="id != null">
@@ -466,396 +468,418 @@
     <!--通过Id列表作为筛选条件查询列表，列表长度不为0-->
     <select id="listByIds" resultMap="FreshStudentsInfoResultMap" parameterType="list">
         select
-          <include refid="table_field" />
+        <include refid="table_field"/>
         from fresh_students_info
-        where  in
+        where id in
         <foreach item="item" collection="list" separator="," open="(" close=")" index="index">
             #{item}
         </foreach>
     </select>
 
     <!--新增实体属性不为null的列-->
-    <insert id="insert" keyProperty="" useGeneratedKeys="true" parameterType="com.byd.personnel.common.entity.FreshStudentsInfoEntity">
+    <insert id="insert" keyProperty="" useGeneratedKeys="true"
+            parameterType="com.byd.personnel.common.entity.FreshStudentsInfoEntity">
         insert into fresh_students_info
         <trim prefix="(" suffix=")" suffixOverrides=",">
-          <if test="id != null">
-             id,
-          </if>
-          <if test="infoRegistrationNo != null">
-             info_registration_no,
-          </if>
-          <if test="infoName != null">
-             info_name,
-          </if>
-          <if test="infoSex != null">
-             info_sex,
-          </if>
-          <if test="infoGraduationSchool != null">
-             info_graduation_school,
-          </if>
-          <if test="infoMajor != null">
-             info_major,
-          </if>
-          <if test="infoHighestEducation != null">
-             info_highest_education,
-          </if>
-          <if test="infoPhone != null">
-             info_phone,
-          </if>
-          <if test="infoMailbox != null">
-             info_mailbox,
-          </if>
-          <if test="infoNativePlace != null">
-             info_native_place,
-          </if>
-          <if test="infoWorkPlace != null">
-             info_work_place,
-          </if>
-          <if test="infoIntendedPost != null">
-             info_intended_post,
-          </if>
-          <if test="infoCreateTime != null">
-             info_create_time,
-          </if>
-          <if test="infoCreateName != null">
-             info_create_name,
-          </if>
-          <if test="infoInterviewTime != null">
-             info_interview_time,
-          </if>
-          <if test="infoPersonnelInterview != null">
-             info_personnel_interview,
-          </if>
-          <if test="infoPersonnelScore != null">
-             info_personnel_score,
-          </if>
-          <if test="infoPersonnelName != null">
-             info_personnel_name,
-          </if>
-          <if test="infoDeptment != null">
-             info_deptment,
-          </if>
-          <if test="infoPushDepartment != null">
-             info_push_department,
-          </if>
-          <if test="infoPushName != null">
-             info_push_name,
-          </if>
-          <if test="infoPushTime != null">
-             info_push_time,
-          </if>
-          <if test="infoResumePusher != null">
-             info_resume_pusher,
-          </if>
-          <if test="postSectionOffice != null">
-             post_section_office,
-          </if>
-          <if test="postActualPosition != null">
-             post_actual_position,
-          </if>
-          <if test="postDuty != null">
-             post_duty,
-          </if>
-          <if test="technicalInterview != null">
-             technical_interview,
-          </if>
-          <if test="technicalScore != null">
-             technical_score,
-          </if>
-          <if test="technicalName != null">
-             technical_name,
-          </if>
-          <if test="stuSchoolReport != null">
-             stu_school_report,
-          </if>
-          <if test="stuCet4 != null">
-             stu_cet4,
-          </if>
-          <if test="stuEducationReport != null">
-             stu_education_report,
-          </if>
-          <if test="stuOther != null">
-             stu_other,
-          </if>
-          <if test="auditLastTime != null">
-             audit_last_time,
-          </if>
-          <if test="auditName != null">
-             audit_name,
-          </if>
-          <if test="auditStatus != null">
-             audit_status,
-          </if>
-          <if test="auditRemark != null">
-             audit_remark,
-          </if>
-          <if test="signStatus != null">
-             sign_status,
-          </if>
-          <if test="signEmploymentForm != null">
-             sign_employment_form,
-          </if>
-          <if test="signTime != null">
-             sign_time,
-          </if>
-          <if test="signName != null">
-             sign_name,
-          </if>
-          <if test="salaryTime != null">
-             salary_time,
-          </if>
-          <if test="salaryName != null">
-             salary_name,
-          </if>
-          <if test="offerTime != null">
-             offer_time,
-          </if>
-          <if test="offerSendName != null">
-             offer_send_name,
-          </if>
-          <if test="followSign != null">
-             follow_sign,
-          </if>
-          <if test="followSignTime != null">
-             follow_sign_time,
-          </if>
-          <if test="followSignName != null">
-             follow_sign_name,
-          </if>
-          <if test="followMeans != null">
-             follow_means,
-          </if>
-          <if test="followMeansTime != null">
-             follow_means_time,
-          </if>
-          <if test="followMeansName != null">
-             follow_means_name,
-          </if>
-          <if test="defaultStatus != null">
-             default_status,
-          </if>
-          <if test="defaultExplain != null">
-             default_explain,
-          </if>
-          <if test="defaultTime != null">
-             default_time,
-          </if>
-          <if test="defaultName != null">
-             default_name,
-          </if>
-          <if test="status != null">
-             status,
-          </if>
-          <if test="entend1 != null">
-             entend1,
-          </if>
-          <if test="entend2 != null">
-             entend2,
-          </if>
-          <if test="entend3 != null">
-             entend3,
-          </if>
-          <if test="entend4 != null">
-             entend4,
-          </if>
-          <if test="entend5 != null">
-             entend5,
-          </if>
+            <if test="id != null">
+                id,
+            </if>
+            <if test="infoRegistrationNo != null">
+                info_registration_no,
+            </if>
+            <if test="infoName != null">
+                info_name,
+            </if>
+            <if test="infoSex != null">
+                info_sex,
+            </if>
+            <if test="infoGraduationSchool != null">
+                info_graduation_school,
+            </if>
+            <if test="infoMajor != null">
+                info_major,
+            </if>
+            <if test="infoHighestEducation != null">
+                info_highest_education,
+            </if>
+            <if test="infoPhone != null">
+                info_phone,
+            </if>
+            <if test="infoMailbox != null">
+                info_mailbox,
+            </if>
+            <if test="infoNativePlace != null">
+                info_native_place,
+            </if>
+            <if test="infoWorkPlace != null">
+                info_work_place,
+            </if>
+            <if test="infoIntendedPost != null">
+                info_intended_post,
+            </if>
+            <if test="infoCreateTime != null">
+                info_create_time,
+            </if>
+            <if test="infoCreateName != null">
+                info_create_name,
+            </if>
+            <if test="infoInterviewTime != null">
+                info_interview_time,
+            </if>
+            <if test="infoPersonnelInterview != null">
+                info_personnel_interview,
+            </if>
+            <if test="infoPersonnelScore != null">
+                info_personnel_score,
+            </if>
+            <if test="infoPersonnelName != null">
+                info_personnel_name,
+            </if>
+            <if test="infoDeptment != null">
+                info_deptment,
+            </if>
+            <if test="infoPushDepartment != null">
+                info_push_department,
+            </if>
+            <if test="infoPushName != null">
+                info_push_name,
+            </if>
+            <if test="infoPushTime != null">
+                info_push_time,
+            </if>
+            <if test="infoResumePusher != null">
+                info_resume_pusher,
+            </if>
+            <if test="postSectionOffice != null">
+                post_section_office,
+            </if>
+            <if test="postActualPosition != null">
+                post_actual_position,
+            </if>
+            <if test="postDuty != null">
+                post_duty,
+            </if>
+            <if test="technicalInterview != null">
+                technical_interview,
+            </if>
+            <if test="technicalScore != null">
+                technical_score,
+            </if>
+            <if test="technicalName != null">
+                technical_name,
+            </if>
+            <if test="stuSchoolReport != null">
+                stu_school_report,
+            </if>
+            <if test="stuCet4 != null">
+                stu_cet4,
+            </if>
+            <if test="stuEducationReport != null">
+                stu_education_report,
+            </if>
+            <if test="stuOther != null">
+                stu_other,
+            </if>
+            <if test="auditLastTime != null">
+                audit_last_time,
+            </if>
+            <if test="auditName != null">
+                audit_name,
+            </if>
+            <if test="auditStatus != null">
+                audit_status,
+            </if>
+            <if test="auditRemark != null">
+                audit_remark,
+            </if>
+            <if test="signStatus != null">
+                sign_status,
+            </if>
+            <if test="signEmploymentForm != null">
+                sign_employment_form,
+            </if>
+            <if test="signTime != null">
+                sign_time,
+            </if>
+            <if test="signName != null">
+                sign_name,
+            </if>
+            <if test="salaryTime != null">
+                salary_time,
+            </if>
+            <if test="salaryName != null">
+                salary_name,
+            </if>
+            <if test="offerTime != null">
+                offer_time,
+            </if>
+            <if test="offerSendName != null">
+                offer_send_name,
+            </if>
+            <if test="followSign != null">
+                follow_sign,
+            </if>
+            <if test="followSignTime != null">
+                follow_sign_time,
+            </if>
+            <if test="followSignName != null">
+                follow_sign_name,
+            </if>
+            <if test="followMeans != null">
+                follow_means,
+            </if>
+            <if test="followMeansTime != null">
+                follow_means_time,
+            </if>
+            <if test="followMeansName != null">
+                follow_means_name,
+            </if>
+            <if test="defaultStatus != null">
+                default_status,
+            </if>
+            <if test="defaultExplain != null">
+                default_explain,
+            </if>
+            <if test="defaultTime != null">
+                default_time,
+            </if>
+            <if test="defaultName != null">
+                default_name,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="entend1 != null">
+                entend1,
+            </if>
+            <if test="entend2 != null">
+                entend2,
+            </if>
+            <if test="entend3 != null">
+                entend3,
+            </if>
+            <if test="entend4 != null">
+                entend4,
+            </if>
+            <if test="entend5 != null">
+                entend5,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-          <if test="id != null">
-             #{id,jdbcType=INTEGER},
-          </if>
-          <if test="infoRegistrationNo != null">
-             #{infoRegistrationNo,jdbcType=VARCHAR},
-          </if>
-          <if test="infoName != null">
-             #{infoName,jdbcType=VARCHAR},
-          </if>
-          <if test="infoSex != null">
-             #{infoSex,jdbcType=INTEGER},
-          </if>
-          <if test="infoGraduationSchool != null">
-             #{infoGraduationSchool,jdbcType=VARCHAR},
-          </if>
-          <if test="infoMajor != null">
-             #{infoMajor,jdbcType=VARCHAR},
-          </if>
-          <if test="infoHighestEducation != null">
-             #{infoHighestEducation,jdbcType=VARCHAR},
-          </if>
-          <if test="infoPhone != null">
-             #{infoPhone,jdbcType=VARCHAR},
-          </if>
-          <if test="infoMailbox != null">
-             #{infoMailbox,jdbcType=VARCHAR},
-          </if>
-          <if test="infoNativePlace != null">
-             #{infoNativePlace,jdbcType=VARCHAR},
-          </if>
-          <if test="infoWorkPlace != null">
-             #{infoWorkPlace,jdbcType=VARCHAR},
-          </if>
-          <if test="infoIntendedPost != null">
-             #{infoIntendedPost,jdbcType=VARCHAR},
-          </if>
-          <if test="infoCreateTime != null">
-             #{infoCreateTime,jdbcType=OTHER},
-          </if>
-          <if test="infoCreateName != null">
-             #{infoCreateName,jdbcType=VARCHAR},
-          </if>
-          <if test="infoInterviewTime != null">
-             #{infoInterviewTime,jdbcType=OTHER},
-          </if>
-          <if test="infoPersonnelInterview != null">
-             #{infoPersonnelInterview,jdbcType=VARCHAR},
-          </if>
-          <if test="infoPersonnelScore != null">
-             #{infoPersonnelScore,jdbcType=VARCHAR},
-          </if>
-          <if test="infoPersonnelName != null">
-             #{infoPersonnelName,jdbcType=VARCHAR},
-          </if>
-          <if test="infoDeptment != null">
-             #{infoDeptment,jdbcType=VARCHAR},
-          </if>
-          <if test="infoPushDepartment != null">
-             #{infoPushDepartment,jdbcType=VARCHAR},
-          </if>
-          <if test="infoPushName != null">
-             #{infoPushName,jdbcType=VARCHAR},
-          </if>
-          <if test="infoPushTime != null">
-             #{infoPushTime,jdbcType=VARCHAR},
-          </if>
-          <if test="infoResumePusher != null">
-             #{infoResumePusher,jdbcType=VARCHAR},
-          </if>
-          <if test="postSectionOffice != null">
-             #{postSectionOffice,jdbcType=VARCHAR},
-          </if>
-          <if test="postActualPosition != null">
-             #{postActualPosition,jdbcType=VARCHAR},
-          </if>
-          <if test="postDuty != null">
-             #{postDuty,jdbcType=VARCHAR},
-          </if>
-          <if test="technicalInterview != null">
-             #{technicalInterview,jdbcType=VARCHAR},
-          </if>
-          <if test="technicalScore != null">
-             #{technicalScore,jdbcType=VARCHAR},
-          </if>
-          <if test="technicalName != null">
-             #{technicalName,jdbcType=VARCHAR},
-          </if>
-          <if test="stuSchoolReport != null">
-             #{stuSchoolReport,jdbcType=VARCHAR},
-          </if>
-          <if test="stuCet4 != null">
-             #{stuCet4,jdbcType=VARCHAR},
-          </if>
-          <if test="stuEducationReport != null">
-             #{stuEducationReport,jdbcType=VARCHAR},
-          </if>
-          <if test="stuOther != null">
-             #{stuOther,jdbcType=VARCHAR},
-          </if>
-          <if test="auditLastTime != null">
-             #{auditLastTime,jdbcType=OTHER},
-          </if>
-          <if test="auditName != null">
-             #{auditName,jdbcType=VARCHAR},
-          </if>
-          <if test="auditStatus != null">
-             #{auditStatus,jdbcType=VARCHAR},
-          </if>
-          <if test="auditRemark != null">
-             #{auditRemark,jdbcType=VARCHAR},
-          </if>
-          <if test="signStatus != null">
-             #{signStatus,jdbcType=VARCHAR},
-          </if>
-          <if test="signEmploymentForm != null">
-             #{signEmploymentForm,jdbcType=VARCHAR},
-          </if>
-          <if test="signTime != null">
-             #{signTime,jdbcType=OTHER},
-          </if>
-          <if test="signName != null">
-             #{signName,jdbcType=VARCHAR},
-          </if>
-          <if test="salaryTime != null">
-             #{salaryTime,jdbcType=OTHER},
-          </if>
-          <if test="salaryName != null">
-             #{salaryName,jdbcType=VARCHAR},
-          </if>
-          <if test="offerTime != null">
-             #{offerTime,jdbcType=OTHER},
-          </if>
-          <if test="offerSendName != null">
-             #{offerSendName,jdbcType=VARCHAR},
-          </if>
-          <if test="followSign != null">
-             #{followSign,jdbcType=VARCHAR},
-          </if>
-          <if test="followSignTime != null">
-             #{followSignTime,jdbcType=OTHER},
-          </if>
-          <if test="followSignName != null">
-             #{followSignName,jdbcType=VARCHAR},
-          </if>
-          <if test="followMeans != null">
-             #{followMeans,jdbcType=VARCHAR},
-          </if>
-          <if test="followMeansTime != null">
-             #{followMeansTime,jdbcType=OTHER},
-          </if>
-          <if test="followMeansName != null">
-             #{followMeansName,jdbcType=VARCHAR},
-          </if>
-          <if test="defaultStatus != null">
-             #{defaultStatus,jdbcType=INTEGER},
-          </if>
-          <if test="defaultExplain != null">
-             #{defaultExplain,jdbcType=VARCHAR},
-          </if>
-          <if test="defaultTime != null">
-             #{defaultTime,jdbcType=OTHER},
-          </if>
-          <if test="defaultName != null">
-             #{defaultName,jdbcType=VARCHAR},
-          </if>
-          <if test="status != null">
-             #{status,jdbcType=VARCHAR},
-          </if>
-          <if test="entend1 != null">
-             #{entend1,jdbcType=VARCHAR},
-          </if>
-          <if test="entend2 != null">
-             #{entend2,jdbcType=VARCHAR},
-          </if>
-          <if test="entend3 != null">
-             #{entend3,jdbcType=VARCHAR},
-          </if>
-          <if test="entend4 != null">
-             #{entend4,jdbcType=VARCHAR},
-          </if>
-          <if test="entend5 != null">
-             #{entend5,jdbcType=VARCHAR},
-          </if>
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="infoRegistrationNo != null">
+                #{infoRegistrationNo,jdbcType=VARCHAR},
+            </if>
+            <if test="infoName != null">
+                #{infoName,jdbcType=VARCHAR},
+            </if>
+            <if test="infoSex != null">
+                #{infoSex,jdbcType=INTEGER},
+            </if>
+            <if test="infoGraduationSchool != null">
+                #{infoGraduationSchool,jdbcType=VARCHAR},
+            </if>
+            <if test="infoMajor != null">
+                #{infoMajor,jdbcType=VARCHAR},
+            </if>
+            <if test="infoHighestEducation != null">
+                #{infoHighestEducation,jdbcType=VARCHAR},
+            </if>
+            <if test="infoPhone != null">
+                #{infoPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="infoMailbox != null">
+                #{infoMailbox,jdbcType=VARCHAR},
+            </if>
+            <if test="infoNativePlace != null">
+                #{infoNativePlace,jdbcType=VARCHAR},
+            </if>
+            <if test="infoWorkPlace != null">
+                #{infoWorkPlace,jdbcType=VARCHAR},
+            </if>
+            <if test="infoIntendedPost != null">
+                #{infoIntendedPost,jdbcType=VARCHAR},
+            </if>
+            <if test="infoCreateTime != null">
+                #{infoCreateTime,jdbcType=OTHER},
+            </if>
+            <if test="infoCreateName != null">
+                #{infoCreateName,jdbcType=VARCHAR},
+            </if>
+            <if test="infoInterviewTime != null">
+                #{infoInterviewTime,jdbcType=OTHER},
+            </if>
+            <if test="infoPersonnelInterview != null">
+                #{infoPersonnelInterview,jdbcType=VARCHAR},
+            </if>
+            <if test="infoPersonnelScore != null">
+                #{infoPersonnelScore,jdbcType=VARCHAR},
+            </if>
+            <if test="infoPersonnelName != null">
+                #{infoPersonnelName,jdbcType=VARCHAR},
+            </if>
+            <if test="infoDeptment != null">
+                #{infoDeptment,jdbcType=VARCHAR},
+            </if>
+            <if test="infoPushDepartment != null">
+                #{infoPushDepartment,jdbcType=VARCHAR},
+            </if>
+            <if test="infoPushName != null">
+                #{infoPushName,jdbcType=VARCHAR},
+            </if>
+            <if test="infoPushTime != null">
+                #{infoPushTime,jdbcType=VARCHAR},
+            </if>
+            <if test="infoResumePusher != null">
+                #{infoResumePusher,jdbcType=VARCHAR},
+            </if>
+            <if test="postSectionOffice != null">
+                #{postSectionOffice,jdbcType=VARCHAR},
+            </if>
+            <if test="postActualPosition != null">
+                #{postActualPosition,jdbcType=VARCHAR},
+            </if>
+            <if test="postDuty != null">
+                #{postDuty,jdbcType=VARCHAR},
+            </if>
+            <if test="technicalInterview != null">
+                #{technicalInterview,jdbcType=VARCHAR},
+            </if>
+            <if test="technicalScore != null">
+                #{technicalScore,jdbcType=VARCHAR},
+            </if>
+            <if test="technicalName != null">
+                #{technicalName,jdbcType=VARCHAR},
+            </if>
+            <if test="stuSchoolReport != null">
+                #{stuSchoolReport,jdbcType=VARCHAR},
+            </if>
+            <if test="stuCet4 != null">
+                #{stuCet4,jdbcType=VARCHAR},
+            </if>
+            <if test="stuEducationReport != null">
+                #{stuEducationReport,jdbcType=VARCHAR},
+            </if>
+            <if test="stuOther != null">
+                #{stuOther,jdbcType=VARCHAR},
+            </if>
+            <if test="auditLastTime != null">
+                #{auditLastTime,jdbcType=OTHER},
+            </if>
+            <if test="auditName != null">
+                #{auditName,jdbcType=VARCHAR},
+            </if>
+            <if test="auditStatus != null">
+                #{auditStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="auditRemark != null">
+                #{auditRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="signStatus != null">
+                #{signStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="signEmploymentForm != null">
+                #{signEmploymentForm,jdbcType=VARCHAR},
+            </if>
+            <if test="signTime != null">
+                #{signTime,jdbcType=OTHER},
+            </if>
+            <if test="signName != null">
+                #{signName,jdbcType=VARCHAR},
+            </if>
+            <if test="salaryTime != null">
+                #{salaryTime,jdbcType=OTHER},
+            </if>
+            <if test="salaryName != null">
+                #{salaryName,jdbcType=VARCHAR},
+            </if>
+            <if test="offerTime != null">
+                #{offerTime,jdbcType=OTHER},
+            </if>
+            <if test="offerSendName != null">
+                #{offerSendName,jdbcType=VARCHAR},
+            </if>
+            <if test="followSign != null">
+                #{followSign,jdbcType=VARCHAR},
+            </if>
+            <if test="followSignTime != null">
+                #{followSignTime,jdbcType=OTHER},
+            </if>
+            <if test="followSignName != null">
+                #{followSignName,jdbcType=VARCHAR},
+            </if>
+            <if test="followMeans != null">
+                #{followMeans,jdbcType=VARCHAR},
+            </if>
+            <if test="followMeansTime != null">
+                #{followMeansTime,jdbcType=OTHER},
+            </if>
+            <if test="followMeansName != null">
+                #{followMeansName,jdbcType=VARCHAR},
+            </if>
+            <if test="defaultStatus != null">
+                #{defaultStatus,jdbcType=INTEGER},
+            </if>
+            <if test="defaultExplain != null">
+                #{defaultExplain,jdbcType=VARCHAR},
+            </if>
+            <if test="defaultTime != null">
+                #{defaultTime,jdbcType=OTHER},
+            </if>
+            <if test="defaultName != null">
+                #{defaultName,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="entend1 != null">
+                #{entend1,jdbcType=VARCHAR},
+            </if>
+            <if test="entend2 != null">
+                #{entend2,jdbcType=VARCHAR},
+            </if>
+            <if test="entend3 != null">
+                #{entend3,jdbcType=VARCHAR},
+            </if>
+            <if test="entend4 != null">
+                #{entend4,jdbcType=VARCHAR},
+            </if>
+            <if test="entend5 != null">
+                #{entend5,jdbcType=VARCHAR},
+            </if>
         </trim>
     </insert>
 
     <!--批量新增所有列，列表长度不能为0，且列表id统一为null或者统一不为null-->
     <insert id="insertBatch" keyProperty="" useGeneratedKeys="true" parameterType="list">
         insert into fresh_students_info
-         (id, info_registration_no, info_name, info_sex, info_graduation_school, info_major, info_highest_education, info_phone, info_mailbox, info_native_place, info_work_place, info_intended_post, info_create_time, info_create_name, info_interview_time, info_personnel_interview, info_personnel_score, info_personnel_name, info_deptment, info_push_department, info_push_name, info_push_time, info_resume_pusher, post_section_office, post_actual_position, post_duty, technical_interview, technical_score, technical_name, stu_school_report, stu_cet4, stu_education_report, stu_other, audit_last_time, audit_name, audit_status, audit_remark, sign_status, sign_employment_form, sign_time, sign_name, salary_time, salary_name, offer_time, offer_send_name, follow_sign, follow_sign_time, follow_sign_name, follow_means, follow_means_time, follow_means_name, default_status, default_explain, default_time, default_name, status, entend1, entend2, entend3, entend4, entend5)
+        (id, info_registration_no, info_name, info_sex, info_graduation_school, info_major, info_highest_education,
+        info_phone, info_mailbox, info_native_place, info_work_place, info_intended_post, info_create_time,
+        info_create_name, info_interview_time, info_personnel_interview, info_personnel_score, info_personnel_name,
+        info_deptment, info_push_department, info_push_name, info_push_time, info_resume_pusher, post_section_office,
+        post_actual_position, post_duty, technical_interview, technical_score, technical_name, stu_school_report,
+        stu_cet4, stu_education_report, stu_other, audit_last_time, audit_name, audit_status, audit_remark, sign_status,
+        sign_employment_form, sign_time, sign_name, salary_time, salary_name, offer_time, offer_send_name, follow_sign,
+        follow_sign_time, follow_sign_name, follow_means, follow_means_time, follow_means_name, default_status,
+        default_explain, default_time, default_name, status, entend1, entend2, entend3, entend4, entend5)
         values
         <foreach item="item" collection="list" separator="," open="" close="" index="index">
-         (#{item.id}, #{item.infoRegistrationNo}, #{item.infoName}, #{item.infoSex}, #{item.infoGraduationSchool}, #{item.infoMajor}, #{item.infoHighestEducation}, #{item.infoPhone}, #{item.infoMailbox}, #{item.infoNativePlace}, #{item.infoWorkPlace}, #{item.infoIntendedPost}, #{item.infoCreateTime}, #{item.infoCreateName}, #{item.infoInterviewTime}, #{item.infoPersonnelInterview}, #{item.infoPersonnelScore}, #{item.infoPersonnelName}, #{item.infoDeptment}, #{item.infoPushDepartment}, #{item.infoPushName}, #{item.infoPushTime}, #{item.infoResumePusher}, #{item.postSectionOffice}, #{item.postActualPosition}, #{item.postDuty}, #{item.technicalInterview}, #{item.technicalScore}, #{item.technicalName}, #{item.stuSchoolReport}, #{item.stuCet4}, #{item.stuEducationReport}, #{item.stuOther}, #{item.auditLastTime}, #{item.auditName}, #{item.auditStatus}, #{item.auditRemark}, #{item.signStatus}, #{item.signEmploymentForm}, #{item.signTime}, #{item.signName}, #{item.salaryTime}, #{item.salaryName}, #{item.offerTime}, #{item.offerSendName}, #{item.followSign}, #{item.followSignTime}, #{item.followSignName}, #{item.followMeans}, #{item.followMeansTime}, #{item.followMeansName}, #{item.defaultStatus}, #{item.defaultExplain}, #{item.defaultTime}, #{item.defaultName}, #{item.status}, #{item.entend1}, #{item.entend2}, #{item.entend3}, #{item.entend4}, #{item.entend5})
+            (#{item.id}, #{item.infoRegistrationNo}, #{item.infoName}, #{item.infoSex}, #{item.infoGraduationSchool},
+            #{item.infoMajor}, #{item.infoHighestEducation}, #{item.infoPhone}, #{item.infoMailbox},
+            #{item.infoNativePlace}, #{item.infoWorkPlace}, #{item.infoIntendedPost}, #{item.infoCreateTime},
+            #{item.infoCreateName}, #{item.infoInterviewTime}, #{item.infoPersonnelInterview},
+            #{item.infoPersonnelScore}, #{item.infoPersonnelName}, #{item.infoDeptment}, #{item.infoPushDepartment},
+            #{item.infoPushName}, #{item.infoPushTime}, #{item.infoResumePusher}, #{item.postSectionOffice},
+            #{item.postActualPosition}, #{item.postDuty}, #{item.technicalInterview}, #{item.technicalScore},
+            #{item.technicalName}, #{item.stuSchoolReport}, #{item.stuCet4}, #{item.stuEducationReport},
+            #{item.stuOther}, #{item.auditLastTime}, #{item.auditName}, #{item.auditStatus}, #{item.auditRemark},
+            #{item.signStatus}, #{item.signEmploymentForm}, #{item.signTime}, #{item.signName}, #{item.salaryTime},
+            #{item.salaryName}, #{item.offerTime}, #{item.offerSendName}, #{item.followSign}, #{item.followSignTime},
+            #{item.followSignName}, #{item.followMeans}, #{item.followMeansTime}, #{item.followMeansName},
+            #{item.defaultStatus}, #{item.defaultExplain}, #{item.defaultTime}, #{item.defaultName}, #{item.status},
+            #{item.entend1}, #{item.entend2}, #{item.entend3}, #{item.entend4}, #{item.entend5})
         </foreach>
     </insert>
 
@@ -1047,7 +1071,7 @@
                 entend5 = #{entend5,jdbcType=VARCHAR},
             </if>
         </set>
-        where  = #{,jdbcType=}
+        where = #{,jdbcType=}
     </update>
 
     <!--通过表字段修改实体属性不为null的列-->
@@ -1430,317 +1454,317 @@
         update fresh_students_info
         <trim prefix="set" suffixOverrides=",">
             <trim prefix="id = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when id = #{item.id} then #{item.id}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.id}
+                </foreach>
             </trim>
             <trim prefix="info_registration_no = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when id = #{item.id} then #{item.infoRegistrationNo}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.infoRegistrationNo}
+                </foreach>
             </trim>
             <trim prefix="info_name = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when id = #{item.id} then #{item.infoName}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.infoName}
+                </foreach>
             </trim>
             <trim prefix="info_sex = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.infoSex}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.infoSex}
+                </foreach>
             </trim>
             <trim prefix="info_graduation_school = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.infoGraduationSchool}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.infoGraduationSchool}
+                </foreach>
             </trim>
             <trim prefix="info_major = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.infoMajor}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.infoMajor}
+                </foreach>
             </trim>
             <trim prefix="info_highest_education = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.infoHighestEducation}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.infoHighestEducation}
+                </foreach>
             </trim>
             <trim prefix="info_phone = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.infoPhone}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.infoPhone}
+                </foreach>
             </trim>
             <trim prefix="info_mailbox = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.infoMailbox}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.infoMailbox}
+                </foreach>
             </trim>
             <trim prefix="info_native_place = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when id = #{item.id} then #{item.infoNativePlace}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.infoNativePlace}
+                </foreach>
             </trim>
             <trim prefix="info_work_place = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.infoWorkPlace}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.infoWorkPlace}
+                </foreach>
             </trim>
             <trim prefix="info_intended_post = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when id = #{item.id} then #{item.infoIntendedPost}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.infoIntendedPost}
+                </foreach>
             </trim>
             <trim prefix="info_create_time = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.infoCreateTime}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.infoCreateTime}
+                </foreach>
             </trim>
             <trim prefix="info_create_name = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.infoCreateName}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.infoCreateName}
+                </foreach>
             </trim>
             <trim prefix="info_interview_time = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.infoInterviewTime}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.infoInterviewTime}
+                </foreach>
             </trim>
             <trim prefix="info_personnel_interview = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.infoPersonnelInterview}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.infoPersonnelInterview}
+                </foreach>
             </trim>
             <trim prefix="info_personnel_score = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.infoPersonnelScore}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.infoPersonnelScore}
+                </foreach>
             </trim>
             <trim prefix="info_personnel_name = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.infoPersonnelName}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.infoPersonnelName}
+                </foreach>
             </trim>
             <trim prefix="info_deptment = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when id = #{item.id} then #{item.infoDeptment}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.infoDeptment}
+                </foreach>
             </trim>
             <trim prefix="info_push_department = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.infoPushDepartment}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.infoPushDepartment}
+                </foreach>
             </trim>
             <trim prefix="info_push_name = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.infoPushName}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.infoPushName}
+                </foreach>
             </trim>
             <trim prefix="info_push_time = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when id = #{item.id} then #{item.infoPushTime}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.infoPushTime}
+                </foreach>
             </trim>
             <trim prefix="info_resume_pusher = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.infoResumePusher}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.infoResumePusher}
+                </foreach>
             </trim>
             <trim prefix="post_section_office = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.postSectionOffice}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.postSectionOffice}
+                </foreach>
             </trim>
             <trim prefix="post_actual_position = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.postActualPosition}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.postActualPosition}
+                </foreach>
             </trim>
             <trim prefix="post_duty = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.postDuty}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.postDuty}
+                </foreach>
             </trim>
             <trim prefix="technical_interview = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.technicalInterview}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.technicalInterview}
+                </foreach>
             </trim>
             <trim prefix="technical_score = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.technicalScore}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.technicalScore}
+                </foreach>
             </trim>
             <trim prefix="technical_name = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when id = #{item.id} then #{item.technicalName}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.technicalName}
+                </foreach>
             </trim>
             <trim prefix="stu_school_report = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.stuSchoolReport}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.stuSchoolReport}
+                </foreach>
             </trim>
             <trim prefix="stu_cet4 = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.stuCet4}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.stuCet4}
+                </foreach>
             </trim>
             <trim prefix="stu_education_report = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.stuEducationReport}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.stuEducationReport}
+                </foreach>
             </trim>
             <trim prefix="stu_other = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.stuOther}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.stuOther}
+                </foreach>
             </trim>
             <trim prefix="audit_last_time = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.auditLastTime}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.auditLastTime}
+                </foreach>
             </trim>
             <trim prefix="audit_name = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.auditName}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.auditName}
+                </foreach>
             </trim>
             <trim prefix="audit_status = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.auditStatus}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.auditStatus}
+                </foreach>
             </trim>
             <trim prefix="audit_remark = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.auditRemark}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.auditRemark}
+                </foreach>
             </trim>
             <trim prefix="sign_status = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.signStatus}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.signStatus}
+                </foreach>
             </trim>
             <trim prefix="sign_employment_form = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.signEmploymentForm}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.signEmploymentForm}
+                </foreach>
             </trim>
             <trim prefix="sign_time = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.signTime}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.signTime}
+                </foreach>
             </trim>
             <trim prefix="sign_name = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.signName}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.signName}
+                </foreach>
             </trim>
             <trim prefix="salary_time = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.salaryTime}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.salaryTime}
+                </foreach>
             </trim>
             <trim prefix="salary_name = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.salaryName}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.salaryName}
+                </foreach>
             </trim>
             <trim prefix="offer_time = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.offerTime}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.offerTime}
+                </foreach>
             </trim>
             <trim prefix="offer_send_name = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.offerSendName}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.offerSendName}
+                </foreach>
             </trim>
             <trim prefix="follow_sign = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.followSign}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.followSign}
+                </foreach>
             </trim>
             <trim prefix="follow_sign_time = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when id = #{item.id} then #{item.followSignTime}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.followSignTime}
+                </foreach>
             </trim>
             <trim prefix="follow_sign_name = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.followSignName}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.followSignName}
+                </foreach>
             </trim>
             <trim prefix="follow_means = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.followMeans}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.followMeans}
+                </foreach>
             </trim>
             <trim prefix="follow_means_time = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.followMeansTime}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.followMeansTime}
+                </foreach>
             </trim>
             <trim prefix="follow_means_name = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.followMeansName}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.followMeansName}
+                </foreach>
             </trim>
             <trim prefix="default_status = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when id = #{item.id} then #{item.defaultStatus}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.defaultStatus}
+                </foreach>
             </trim>
             <trim prefix="default_explain = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.defaultExplain}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.defaultExplain}
+                </foreach>
             </trim>
             <trim prefix="default_time = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.defaultTime}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.defaultTime}
+                </foreach>
             </trim>
             <trim prefix="default_name = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.defaultName}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.defaultName}
+                </foreach>
             </trim>
             <trim prefix="status = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.status}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.status}
+                </foreach>
             </trim>
             <trim prefix="entend1 = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.entend1}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.entend1}
+                </foreach>
             </trim>
             <trim prefix="entend2 = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.entend2}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.entend2}
+                </foreach>
             </trim>
             <trim prefix="entend3 = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.entend3}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.entend3}
+                </foreach>
             </trim>
             <trim prefix="entend4 = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.entend4}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.entend4}
+                </foreach>
             </trim>
             <trim prefix="entend5 = case" suffix="end,">
-                 <foreach collection="list" item="item" index="index">
-                  when  id = #{item.id} then #{item.entend5}
-                 </foreach>
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.entend5}
+                </foreach>
             </trim>
         </trim>
-        where  in
+        where id in
         <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
             #{item.id,jdbcType=BIGINT}
         </foreach>
     </update>
-    
+
     <!--通过主键删除-->
     <delete id="deleteById" parameterType="java.lang.Long">
         delete from fresh_students_info where id = #{id,jdbcType=BIGINT}
@@ -1935,19 +1959,19 @@
             </if>
         </where>
     </delete>
-    
+
     <!--通过主键列表删除，列表长度不能为0-->
     <delete id="deleteByIds" parameterType="list">
-        delete from fresh_students_info where  in
+        delete from fresh_students_info where id in
         <foreach item="item" collection="list" separator="," open="(" close=")" index="index">
             #{item}
         </foreach>
     </delete>
-    
+
     <select id="countAll" resultType="int">
         select count(*) from fresh_students_info
     </select>
-    
+
     <select id="countByEntity" parameterType="com.byd.personnel.common.entity.FreshStudentsInfoEntity" resultType="int">
         select count(*) from fresh_students_info
         <where>

@@ -21,7 +21,7 @@
         select
           <include refid="table_field" />
         from user_info
-        where  = #{,jdbcType=}
+        where id = #{id,jdbcType=BIGINT}
     </select>
 
 
@@ -90,7 +90,7 @@
         select
           <include refid="table_field" />
         from user_info
-        where  in
+        where id in
         <foreach item="item" collection="list" separator="," open="(" close=")" index="index">
             #{item}
         </foreach>
@@ -183,7 +183,7 @@
                 extend1 = #{extend1,jdbcType=VARCHAR},
             </if>
         </set>
-        where  = #{,jdbcType=}
+        where  id = #{id,jdbcType=BIGINT}
     </update>
 
     <!--通过表字段修改实体属性不为null的列-->
@@ -277,7 +277,7 @@
                  </foreach>
             </trim>
         </trim>
-        where  in
+        where id in
         <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
             #{item.id,jdbcType=BIGINT}
         </foreach>
@@ -318,7 +318,7 @@
     
     <!--通过主键列表删除，列表长度不能为0-->
     <delete id="deleteByIds" parameterType="list">
-        delete from user_info where  in
+        delete from user_info where id in
         <foreach item="item" collection="list" separator="," open="(" close=")" index="index">
             #{item}
         </foreach>

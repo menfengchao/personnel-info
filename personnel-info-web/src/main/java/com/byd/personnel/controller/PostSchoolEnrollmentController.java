@@ -16,7 +16,8 @@ import java.util.List;
  * @since 2022-10-25 15:40:52
  */
 
-@RestController("/postSchoolEnrollment")
+@RestController
+@RequestMapping("postSchoolEnrollment")
 public class PostSchoolEnrollmentController {
 
    @Autowired

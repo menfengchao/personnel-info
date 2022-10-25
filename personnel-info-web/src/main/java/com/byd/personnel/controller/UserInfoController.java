@@ -14,7 +14,8 @@ import java.util.List;
  * @since 2022-10-25 15:13:19
  */
 
-@RestController("/userInfo")
+@RestController
+@RequestMapping("userInfo")
 public class UserInfoController {
 
    @Autowired
