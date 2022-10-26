@@ -4,6 +4,7 @@ package com.byd.personnel.service;
 import com.byd.personnel.common.entity.FreshStudentsInfoEntity;
 import com.byd.personnel.dao.mapper.FreshStudentsInfoMapper;
 
+import java.io.InputStream;
 import java.util.List;
 
 public interface FreshStudentsInfoService {
@@ -35,4 +36,6 @@ public interface FreshStudentsInfoService {
     int countAll();
     
     int countByEntity(FreshStudentsInfoEntity freshStudentsInfo);
+
+    Integer importFreshStudentsInfo(InputStream inputStream);
 }

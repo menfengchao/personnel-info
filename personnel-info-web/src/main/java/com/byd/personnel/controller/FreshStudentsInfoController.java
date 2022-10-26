@@ -2,9 +2,13 @@ package com.byd.personnel.controller;
 
 import com.byd.personnel.common.entity.FreshStudentsInfoEntity;
 import com.byd.personnel.service.FreshStudentsInfoService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.List;
 
 
@@ -16,6 +20,7 @@ import java.util.List;
  */
 
 @RestController
+@Slf4j
 @RequestMapping("freshStudentsInfo")
 public class FreshStudentsInfoController {
 
@@ -57,8 +62,25 @@ public class FreshStudentsInfoController {
 
    @DeleteMapping("/delete")
    public int deleteBatch(@RequestBody List<Long> param){
-       int result = 0;
        return freshStudentsInfoService.deleteByIds(param);
    }
 
+    /**
+     * 导入学员基本信息
+     * @param file
+     * @return
+     */
+    @PostMapping(value = "/imports")
+    public Integer importFreshStudentsInfo(@RequestParam("file") MultipartFile file) {
+        log.info("importFreshStudentsInfo, file:{}", file.getSize());
+        Integer result = 0;
+        try {
+            byte[] byteArr = file.getBytes();
+            InputStream inputStream = new ByteArrayInputStream(byteArr);
+            result = freshStudentsInfoService.importFreshStudentsInfo(inputStream);
+        } catch (Exception e) {
+            log.error("file err", e);
+        }
+        return result;
+    }
 }
